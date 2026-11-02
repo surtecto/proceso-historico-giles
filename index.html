@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Línea histórica de San Andrés de Giles de 1699 a hoy: hechos del pueblo, del campo y del país, con fotos, planos y censos, en círculos que se abren al avanzar en el tiempo.">
+<meta property="og:title" content="San Andrés de Giles, su proceso">
+<meta property="og:description" content="Línea histórica de San Andrés de Giles de 1699 a hoy: hechos del pueblo, del campo y del país, con fotos, planos y censos, en círculos que se abren al avanzar en el tiempo.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>San Andrés de Giles, su proceso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..700;1,400..700&family=Saira:wdth,wght@50..125,300..700&family=Saira+Stencil+One&display=swap">
+<style>
+/* Lámina de plano: escenario de círculos anidados a la izquierda; a la derecha, el rótulo del hecho local
+   y el pliego del país; al pie, la escala de los años con la curva de los censos.
+   Claro = copia heliográfica (diazo); oscuro = cianotipo. Colores de capa según convención de mensura. */
+:root{
+  --paper:#F5F5F0; --sheet:#FBFBF8; --panel:#EEEEEA;
+  --ink:#23264F; --ink-2:#585B83; --line:#C9CAD6; --line-2:#DCDDE5;
+  --diazo:#2F3489;
+  --carmin:#B3203E; --verde:#2C6A3C; --azul:#2D5FA5; --amarillo:#9E6E00;
+  --duo-dark:#262A6B; --duo-light:#F5F5F0;
+  --f-stencil:"Saira Stencil One","Saira","Arial Narrow",sans-serif;
+  --f-ui:"Saira","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --f-read:"Alegreya",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F2D4B; --sheet:#11335A; --panel:#0C2742;
+    --ink:#EAF2F9; --ink-2:#A7C1D8; --line:#2E5378; --line-2:#244668;
+    --diazo:#D8E8F6;
+    --carmin:#FF9BB0; --verde:#9ADCAB; --azul:#AACDFF; --amarillo:#FFD45E;
+    --duo-dark:#0A2443; --duo-light:#DCEAF6;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F2D4B; --sheet:#11335A; --panel:#0C2742;
+  --ink:#EAF2F9; --ink-2:#A7C1D8; --line:#2E5378; --line-2:#244668;
+  --diazo:#D8E8F6;
+  --carmin:#FF9BB0; --verde:#9ADCAB; --azul:#AACDFF; --amarillo:#FFD45E;
+  --duo-dark:#0A2443; --duo-light:#DCEAF6;
+  color-scheme:dark;
+}
+
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.45;overflow:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--diazo);outline-offset:2px}
+.k{font-family:var(--f-ui);font-stretch:72%;font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+
+.app{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 344px 332px;grid-template-rows:auto minmax(0,1fr) auto}
+
+/* Encabezado */
+.top{grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;
+  padding-block:12px 11px;padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px));
+  border-bottom:1px solid var(--line)}
+.mast{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;min-width:0}
+.mast h1{margin:0;font-family:var(--f-stencil);font-weight:400;font-size:clamp(20px,2.3vw,30px);line-height:1;letter-spacing:.04em;text-transform:uppercase;color:var(--diazo)}
+.mast p{margin:0;font-family:var(--f-read);font-style:italic;font-size:clamp(16px,1.5vw,20px);color:var(--ink-2)}
+.tools{display:flex;gap:6px 14px;align-items:center;flex-wrap:wrap}
+.layer{display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;padding:6px 4px;cursor:pointer;font-stretch:85%;font-weight:500;font-size:13px;letter-spacing:.03em}
+.layer i{display:block;width:22px;height:0;border-top:3px solid var(--c)}
+.layer[aria-pressed="false"]{opacity:.42}
+.layer[aria-pressed="false"] i{border-top-style:dotted}
+.layer[data-l="p"]{--c:var(--carmin)} .layer[data-l="c"]{--c:var(--verde)} .layer[data-l="x"]{--c:var(--azul)}
+.loss-key{display:inline-flex;align-items:center;gap:8px;font-stretch:85%;font-size:13px;color:var(--ink-2)}
+.loss-key i{display:block;width:22px;height:0;border-top:3px dashed var(--amarillo)}
+.btn{border:1px solid var(--line);background:transparent;padding:6px 12px;font-size:12.5px;font-stretch:85%;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+
+/* Escenario */
+.stage{grid-column:1;grid-row:2;position:relative;min-width:0;min-height:0;overflow:hidden;background:var(--sheet);touch-action:none}
+.stage::before,.stage::after{content:"";position:absolute;pointer-events:none;z-index:2}
+.stage::before{inset:10px;border:1px solid var(--line)}
+.stage::after{inset:15px;border:2px solid var(--line-2)}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+.corner{position:absolute;z-index:3;margin:0;pointer-events:none}
+.corner.tl{left:26px;top:22px}
+.corner.tr{right:26px;top:22px;text-align:right}
+.corner.bl{left:26px;bottom:22px;max-width:60%}
+.corner .k{display:block}
+.corner b{font-family:var(--f-stencil);font-weight:400;font-size:15px;letter-spacing:.06em;color:var(--ink)}
+.hint{font-family:var(--f-read);font-style:italic;font-size:13.5px;color:var(--ink-2)}
+
+/* Rótulo del hecho */
+.col{min-height:0;overflow:auto;border-left:1px solid var(--line)}
+.ficha{grid-column:2;grid-row:2;background:var(--paper)}
+.ficha-in{padding:20px 20px 24px;display:flex;flex-direction:column;gap:10px}
+.f-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.lay{display:inline-flex;align-items:center;gap:7px}
+.lay i{display:block;width:18px;border-top:3px solid var(--c)}
+.lay.p{--c:var(--carmin)} .lay.c{--c:var(--verde)} .lay.x{--c:var(--azul)}
+.lay.neg i{border-top-style:dashed;--c:var(--amarillo)}
+.f-year{font-family:var(--f-stencil);font-size:76px;line-height:.9;letter-spacing:.01em;color:var(--c,var(--diazo));font-variant-numeric:lining-nums}
+.f-year.p{--c:var(--carmin)} .f-year.c{--c:var(--verde)} .f-year.x{--c:var(--azul)} .f-year.neg{--c:var(--amarillo)}
+.ficha h2{margin:0;font-family:var(--f-ui);font-weight:600;font-stretch:92%;font-size:21px;line-height:1.2;text-wrap:balance}
+.f-note{margin:0;font-family:var(--f-read);font-style:italic;font-size:18px;line-height:1.3;color:var(--ink-2)}
+.f-detail{margin:0;font-family:var(--f-read);font-size:16.5px;line-height:1.5}
+.f-fix{margin:2px 0 0;padding:2px 0 2px 12px;border-left:3px dashed var(--amarillo);font-family:var(--f-read);font-size:15px;line-height:1.45}
+.f-fix b{display:block;font-family:var(--f-ui);font-stretch:72%;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amarillo);margin-bottom:2px}
+.f-img{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:start;margin-top:4px;padding-top:12px;border-top:1px solid var(--line)}
+.f-img .k{grid-column:1 / -1}
+.thumb{width:68px;height:68px;border-radius:50%;border:1px solid var(--line);padding:0;background:var(--sheet) center/cover no-repeat;cursor:zoom-in;filter:grayscale(1)}
+.cap{margin:0;font-family:var(--f-read);font-style:italic;font-size:14.5px;line-height:1.4}
+.credit{margin:3px 0 0;font-size:12px;color:var(--ink-2);font-stretch:90%}
+.credit a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
+.rotulo{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin-top:6px}
+.rotulo > div{padding:7px 9px;border-top:1px solid var(--line);min-width:0}
+.rotulo > div:nth-child(-n+2){border-top:0}
+.rotulo > div:nth-child(2n){border-left:1px solid var(--line)}
+.rotulo .wide{grid-column:1 / -1;border-left:0 !important}
+.rotulo .v{display:block;font-family:var(--f-stencil);font-size:15px;letter-spacing:.04em;margin-top:1px}
+.rotulo .src{display:flex;flex-direction:column;gap:2px;margin-top:3px;font-size:12.5px;font-stretch:90%}
+.rotulo .src a{overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
+
+/* Pliego del país */
+.pais{grid-column:3;grid-row:2;background:var(--panel)}
+.pais-in{padding:20px 20px 24px;display:flex;flex-direction:column;gap:12px}
+.pais-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.pais-h h3{margin:0;font-family:var(--f-stencil);font-weight:400;font-size:19px;letter-spacing:.06em;text-transform:uppercase}
+.pais-card{display:flex;flex-direction:column;gap:7px}
+.press{position:relative;margin:0;background:var(--sheet);border:1px solid var(--line);aspect-ratio:4 / 3;max-width:100%;overflow:hidden;cursor:zoom-in;padding:0}
+.press img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.press.empty{cursor:default;display:grid;place-items:center;aspect-ratio:auto;min-height:72px;font-family:var(--f-read);font-style:italic;color:var(--ink-2);font-size:14px;padding:14px}
+.p-year{font-family:var(--f-stencil);font-size:42px;line-height:.95;color:var(--ink)}
+.p-rel{font-size:12px;font-stretch:85%;color:var(--ink-2);letter-spacing:.04em}
+.pais h4{margin:0;font-weight:600;font-stretch:92%;font-size:18px;line-height:1.2;text-wrap:balance}
+.p-detail{margin:0;font-family:var(--f-read);font-size:15.5px;line-height:1.45}
+.p-list{list-style:none;margin:4px 0 0;padding:0;border-top:1px solid var(--line)}
+.p-list button{display:grid;grid-template-columns:44px 40px minmax(0,1fr);gap:10px;align-items:center;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--line);padding:7px 0;cursor:pointer}
+.p-list button:hover .t{text-decoration:underline;text-decoration-color:var(--line)}
+.p-list .y{font-family:var(--f-stencil);font-size:15px}
+.p-list .tn{width:40px;height:30px;background:var(--sheet) center/cover no-repeat;filter:grayscale(1);border:1px solid var(--line)}
+.p-list .t{font-size:13.5px;line-height:1.25;font-stretch:92%}
+.p-list .cur{background:var(--sheet)}
+
+/* Pie */
+.bottom{grid-column:1 / -1;grid-row:3;border-top:1px solid var(--line);display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 18px;align-items:center;
+  padding-block:8px 10px;padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px))}
+.ctrl{display:flex;gap:6px;align-items:center}
+.nav{width:40px;height:40px;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center}
+.nav:hover{border-color:var(--ink)}
+.nav svg{width:16px;height:16px}
+#play{height:40px;min-width:104px}
+#play[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.line{min-width:0}
+#tl{display:block;width:100%;height:104px;cursor:pointer;touch-action:none}
+#tl text{font-family:var(--f-ui);font-stretch:85%;font-size:10.5px;fill:var(--ink-2)}
+#tl .ax{stroke:var(--line)}
+#tl .pop{fill:var(--diazo);fill-opacity:.08;stroke:var(--diazo);stroke-width:1.3}
+#tl .urb{fill:none;stroke:var(--carmin);stroke-width:1.3;stroke-dasharray:3 2}
+#tl .rur{fill:none;stroke:var(--verde);stroke-width:1.5}
+#tl .pt{fill:var(--sheet);stroke:var(--diazo);stroke-width:1.3}
+#tl .tick{stroke-width:1.5}
+#tl .tick.p{stroke:var(--carmin)} #tl .tick.c{stroke:var(--verde)} #tl .tick.x{stroke:var(--azul)} #tl .tick.neg{stroke:var(--amarillo)}
+#tl .ntick{stroke:var(--ink-2);stroke-width:1.2}
+#tl .cur{stroke:var(--ink);stroke-width:2}
+#tl .curlbl{font-family:var(--f-stencil);font-size:14px;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+#tl .row{font-stretch:72%;font-weight:600;letter-spacing:.12em;font-size:9.5px}
+#tl .poplbl{paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;font-stretch:85%;color:var(--ink-2)}
+.legend i{display:inline-block;width:16px;border-top:2px solid;vertical-align:middle;margin-right:5px}
+
+/* Capas superpuestas */
+.overlay{position:fixed;inset:0;z-index:20;background:var(--paper);overflow:auto;padding-block:max(18px, env(safe-area-inset-top, 0px)) 40px;padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px))}
+.ov-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;max-width:1040px;margin:0 auto 14px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.ov-head h2{margin:0;font-family:var(--f-stencil);font-weight:400;font-size:26px;letter-spacing:.05em;text-transform:uppercase}
+.ix-body{max-width:1040px;margin:0 auto;columns:2 400px;column-gap:44px}
+.cent{break-inside:avoid;margin:0 0 18px}
+.cent h3{margin:0 0 6px}
+.cent ol{list-style:none;margin:0;padding:0}
+.cent button{display:grid;grid-template-columns:50px 1fr;gap:10px;width:100%;text-align:left;border:0;background:transparent;padding:4px 0;cursor:pointer;border-bottom:1px solid transparent}
+.cent button:hover{border-bottom-color:var(--line)}
+.cent .y{font-family:var(--f-stencil);color:var(--c)}
+.cent .y.p{--c:var(--carmin)} .cent .y.c{--c:var(--verde)} .cent .y.x{--c:var(--azul)} .cent .y.neg{--c:var(--amarillo)} .cent .y.n{--c:var(--ink)}
+.cent .t{font-size:14px;line-height:1.3}
+.cent .ph{font-size:10px;letter-spacing:.1em;color:var(--ink-2);margin-left:6px;font-stretch:80%;text-transform:uppercase}
+.about{max-width:1040px;margin:22px auto 0;padding-top:14px;border-top:1px solid var(--line);font-family:var(--f-read);font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.about p{max-width:74ch;margin:0 0 9px}
+.lb{display:flex;flex-direction:column}
+.lb .ov-head{width:100%;max-width:1200px}
+.lb-body{flex:1;min-height:0;display:grid;place-items:center;max-width:1200px;width:100%;margin:0 auto}
+.lb-body img{max-width:100%;max-height:72vh;object-fit:contain;border:1px solid var(--line);background:var(--sheet)}
+.lb-cap{max-width:1200px;width:100%;margin:12px auto 0}
+
+@media (max-width:1179px){
+  .app{grid-template-columns:minmax(0,1fr) 360px}
+  .ficha{grid-column:2;grid-row:2}
+  .pais{grid-column:2;grid-row:2;display:none}
+  .side-wrap .pais{display:block;border-top:1px solid var(--line)}
+}
+@media (max-width:820px){
+  body{overflow:auto}
+  .app{height:auto;display:flex;flex-direction:column}
+  .top{order:1} .stage{order:2} .bottom{order:3} .ficha{order:4}
+  .stage{height:54vh;min-height:340px;flex:none}
+  .tools{gap:2px 10px}
+  .col{border-left:0;border-top:1px solid var(--line);overflow:visible}
+  .ficha-in,.pais-in{padding:16px max(16px, env(safe-area-inset-right, 0px)) 18px max(16px, env(safe-area-inset-left, 0px))}
+  .f-year{font-size:56px}
+  .corner.tr,.corner .hint{display:none}
+  .bottom{grid-template-columns:minmax(0,1fr);border-bottom:1px solid var(--line)}
+  .ctrl{justify-content:center}
+  #tl{height:84px}
+  .legend{display:none}
+  .mast p{display:none}
+}
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <header class="top">
+    <div class="mast">
+      <h1>San Andrés de Giles</h1>
+      <p>su proceso, 1699–2026</p>
+    </div>
+    <div class="tools" role="group" aria-label="Capas">
+      <button class="layer" data-l="p" aria-pressed="true"><i></i>Pueblo</button>
+      <button class="layer" data-l="c" aria-pressed="true"><i></i>Campo</button>
+      <button class="layer" data-l="x" aria-pressed="true"><i></i>Contexto</button>
+      <span class="loss-key"><i></i>Pérdidas</span>
+      <button class="btn" id="btn-index" aria-haspopup="dialog">Índice</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <canvas id="cv" role="img" aria-label="Círculos anidados de la línea histórica de San Andrés de Giles"></canvas>
+    <p class="corner tl"><span class="k">Escala</span><b>1 : 1,95 por hecho</b></p>
+    <p class="corner tr"><span class="k">Adentro · afuera</span><b id="c-dir"></b></p>
+    <p class="corner bl"><span class="hint">Rueda, flechas o deslizar para recorrer. Clic en un círculo para entrar o salir.</span></p>
+  </main>
+
+  <aside class="col ficha" aria-live="polite">
+    <div class="ficha-in">
+      <div class="f-head"><span class="k lay" id="f-layer"><i></i><span></span></span><span class="k" id="f-kind"></span></div>
+      <div class="f-year" id="f-year"></div>
+      <h2 id="f-title"></h2>
+      <p class="f-note" id="f-note"></p>
+      <p class="f-detail" id="f-detail"></p>
+      <p class="f-fix" id="f-fix" hidden></p>
+      <div class="f-img" id="f-img" hidden>
+        <span class="k">Imagen</span>
+        <button class="thumb" id="f-thumb" aria-label="Ver la imagen ampliada"></button>
+        <div><p class="cap" id="f-cap"></p><p class="credit" id="f-credit"></p></div>
+      </div>
+      <div class="rotulo">
+        <div><span class="k">Lámina</span><span class="v" id="r-lam"></span></div>
+        <div><span class="k">Imagen</span><span class="v" id="r-kind"></span></div>
+        <div class="wide" id="r-src-wrap"><span class="k">Fuentes</span><div class="src" id="r-src"></div></div>
+      </div>
+    </div>
+  </aside>
+
+  <aside class="col pais" id="pais" aria-live="polite">
+    <div class="pais-in">
+      <div class="pais-h"><h3>En el país</h3><span class="k" id="p-span"></span></div>
+      <div class="pais-card">
+        <button class="press" id="p-press" aria-label="Ver la imagen ampliada"><img id="p-img" alt=""></button>
+        <div class="p-rel" id="p-rel"></div>
+        <div class="p-year" id="p-year"></div>
+        <h4 id="p-title"></h4>
+        <p class="p-detail" id="p-detail"></p>
+        <p class="credit" id="p-credit"></p>
+      </div>
+      <ol class="p-list" id="p-list"></ol>
+    </div>
+  </aside>
+
+  <footer class="bottom">
+    <div class="ctrl">
+      <button class="nav" id="prev" aria-label="Hecho anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3L5 8l5 5"/></svg></button>
+      <button class="btn" id="play" aria-pressed="false">Recorrer</button>
+      <button class="nav" id="next" aria-label="Hecho siguiente"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3l5 5-5 5"/></svg></button>
+    </div>
+    <div class="line">
+      <svg id="tl" aria-label="Escala de los años: hechos de Giles arriba, hechos del país abajo, y población del partido"></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+  </footer>
+</div>
+
+<div class="overlay" id="index" role="dialog" aria-modal="true" aria-labelledby="ix-title" hidden>
+  <div class="ov-head"><h2 id="ix-title">Índice</h2><button class="btn" id="ix-close">Cerrar</button></div>
+  <div class="ix-body" id="ix-body"></div>
+  <div class="about" id="about"></div>
+</div>
+
+<div class="overlay lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
+  <div class="ov-head"><h2 id="lb-title"></h2><button class="btn" id="lb-close">Cerrar</button></div>
+  <div class="lb-body"><img id="lb-img" alt=""></div>
+  <div class="lb-cap"><p class="cap" id="lb-cap"></p><p class="credit" id="lb-credit"></p></div>
+</div>
+
+<script type="application/json" id="data">{"eventos":[{"y":1699,"t":"Las tierras de los Giles se unen a la estancia de Ruiz de Arellano","d":"El militar José Ruiz de Arellano se casa con la heredera de los Giles; por esa vía las tierras del Pago de Areco, con la cañada que lleva el apellido, quedan unidas a su estancia.","L":"c","conf":"media","src":["https://www.sanandresdegiles.gob.ar/historia","https://www.welcomeargentina.com/sanantoniodeareco/historia.html"],"v":"+"},{"y":1706,"t":"Pedro de Giles, alcalde del Cabildo porteño","d":"Pedro de Giles es elegido alcalde de primer voto de Buenos Aires. Su familia tenía una merced de tierras, sin fecha documentada, sobre el Areco y a lo largo de la cañada que tomó su nombre.","L":"x","conf":"media","src":["https://intranet.hcdiputados-ba.gov.ar/proyectos/12-13D3036012018-10-0810-31-53.pdf"],"v":"+","img":{"id":"L01","cap":"Plano de Buenos Aires en 1713, por José Bermúdez.","kind":"epoca","fy":0.5}},{"y":1730,"t":"Capilla de San Antonio de Areco","d":"La capilla levantada en la estancia de Ruiz de Arellano se dedica a San Antonio para pedir el fin de los malones. Es el núcleo religioso del Pago de Areco, del que dependerá Giles.","L":"x","conf":"media","src":["https://www.welcomeargentina.com/sanantoniodeareco/historia.html"],"v":"+"},{"y":1738,"t":"Gran malón sobre Areco y Arrecifes","d":"Unos dos mil indígenas invaden Areco y Arrecifes. Los malones marcan la vida del pago durante buena parte del siglo XVIII.","L":"x","v":"-","conf":"media","src":["https://www.redalyc.org/pdf/127/12701808.pdf"],"img":{"id":"L02","cap":"El malón, de Johann Moritz Rugendas, 1845.","kind":"epoca","fy":0.5}},{"y":1753,"t":"Las tierras de la cañada pasan a los Suero y Giles","d":"Muere María Rosa de Giles; por un segundo casamiento de su viudo, los bienes terminan en los herederos Suero y Giles, de quienes saldrá la donación de 1793.","L":"c","conf":"media","src":["https://www.sanandresdegiles.gob.ar/historia"],"v":"+"},{"y":1755,"t":"Estancia La Merced, posta del camino real","d":"Tomás Figueroa funda la estancia La Merced, que funcionará como posta del camino a Cuyo. Otras fuentes la datan hacia 1800.","L":"c","conf":"media","src":["https://www.diagonales.com/municipio/san-andres-de-giles--211-anos-de-existencia_a6213a33c5e6cc543af4a1e44"],"v":"+","img":{"id":"L03","cap":"Pulpería de campaña en Buenos Aires, acuarela de Juan León Pallière, hacia 1858.","kind":"epoca","fy":0.5}},{"y":1779,"t":"Plan de frontera del virrey Vértiz","d":"Se propone a Luján y Salto como guardias principales y a Areco como fortín menor. La frontera empieza a correrse hacia el oeste.","L":"x","conf":"media","src":["https://www.redalyc.org/pdf/127/12701808.pdf"],"v":"+"},{"y":1780,"t":"Fuerte San Claudio de Areco","d":"El 1 de enero se funda el fuerte y pueblo de San Claudio de Areco, hoy Carmen de Areco, que aleja la frontera de la Cañada de Giles.","L":"x","conf":"media","src":["https://es.wikipedia.org/wiki/Carmen_de_Areco"],"v":"+"},{"y":1793,"t":"Donación de tierras por Don Juan Fco. de Suero","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/historia"],"d":"Juan Francisco de Suero y Giles, heredero de las tierras de los Giles, donó 600 varas frente a la Cañada de Giles para levantar un oratorio y trazar un pueblo."},{"y":1794,"t":"Unos 150 pobladores en la Cañada de Giles","d":"Una declaración de febrero de 1794 estima alrededor de 150 habitantes en la cañada, el primer registro de población del lugar.","L":"c","conf":"media","src":["https://infociudad.com.ar/2022/05/20/como-fue-el-primer-censo-en-san-andres-de-giles/"],"v":"+"},{"y":1798,"t":"Posesión de la donación por el cura Vicente Piñero","L":"p","v":"+","fix":"No se halló una fuente para la toma de posesión en 1798. La historia local registra la ratificación de la donación en 1797, y el municipio indica que Piñero obtuvo los permisos en octubre de 1800.","src":["https://www.sanandresdegiles.gob.ar/historia"]},{"y":1800,"t":"Piñero obtiene los permisos y traza el pueblo","d":"En octubre el cura Vicente Piñero recibe la licencia y empieza el oratorio de barro y teja. Ya había delineado los lotes, y llegaban los primeros pobladores, con ranchos cercados de tunas.","L":"p","conf":"alta","src":["https://www.sanandresdegiles.gob.ar/historia"],"v":"+"},{"y":1806,"t":"Primera misa en la Capilla de Giles","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/historia"],"d":"El 30 de noviembre de 1806, día de San Andrés Apóstol, se celebró la primera misa en el oratorio. El partido toma esa fecha como fundación del pueblo.","img":{"id":"L50","cap":"La plaza San Martín, primera plaza del pueblo, con el Palacio Municipal al fondo y el monumento de 1912 al centro. Fotografía de la primera mitad del siglo XX.","kind":"giles","fy":0.5}},{"y":1821,"t":"Fin de los Cabildos y creación de la Provincia","L":"x","n":"Círculo de contexto en la línea original","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 24 de diciembre de 1821 se suprimió el Cabildo de Luján y se crearon las alcaldías de hermandad. Desde ese año el territorio de Giles quedó anexado al partido de Areco."},{"y":1821,"t":"Nombramiento del 1º Alcalde de Hermandad","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Carlos Casco fue el primer Alcalde de Hermandad de Giles."},{"y":1825,"t":"Postas en la Cañada de Giles","d":"Sobre el camino real de Luján a Areco, el viejo camino a Mendoza, se establecen postas, entre ellas la Posta de Giles.","L":"c","conf":"media","src":["https://www.sanandresdegiles.gob.ar/historia"],"v":"+","img":{"id":"L06","cap":"Un alto en el campo, de Prilidiano Pueyrredón, 1861.","kind":"epoca","fy":0.5}},{"y":1827,"t":"Ayudantía de Parroquia","n":"Formación de nuevo cementerio","L":"p","v":"+","fix":"La formación de un nuevo cementerio en 1827 no pudo verificarse en fuentes publicadas.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El oratorio pasa a ser Ayudantía de Parroquia, con capellán estable, dependiente de San Antonio de Areco."},{"y":1828,"t":"Dorrego, prisionero, se detiene en Giles","d":"La comitiva que lleva a Manuel Dorrego hacia Navarro hace un alto en Giles; desde allí escribe pidiendo salir del país.","L":"x","conf":"media","src":["https://www.diagonales.com/municipio/san-andres-de-giles--211-anos-de-existencia_a6213a33c5e6cc543af4a1e44"],"v":"+"},{"y":1829,"t":"Padrón vecinal para pedir la parroquia","d":"Los vecinos levantan un padrón de 1.469 personas para justificar la creación de la parroquia; la historiografía local lo considera posiblemente exagerado.","L":"p","conf":"baja","src":["https://infociudad.com.ar/2022/05/20/como-fue-el-primer-censo-en-san-andres-de-giles/"],"v":"+","img":{"id":"L10","cap":"Payada en una pulpería, de Carlos Morel, hacia 1840.","kind":"epoca","fy":0.5}},{"y":1830,"t":"Creación de la Parroquia","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 18 de noviembre de 1830 se crea la Parroquia San Andrés Apóstol.","img":{"id":"L05","cap":"Parroquia San Andrés Apóstol, Belgrano y San Martín. Foto de 2016.","kind":"hoy","fy":0.5}},{"y":1831,"t":"Sequía en la campaña","d":"En abril, durante una recorrida por la campaña castigada por la sequía, Juan Manuel de Rosas se aloja en la estancia La Merced.","L":"c","v":"-","conf":"media","src":["https://www.diagonales.com/municipio/san-andres-de-giles--211-anos-de-existencia_a6213a33c5e6cc543af4a1e44"]},{"y":1832,"t":"Nombramiento del 1º Juez de Paz","n":"Existencia del Partido","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 5 de enero de 1832 Juan Gregorio Carrasco es designado primer Juez de Paz. Esa fecha se toma como creación del partido, separado del de Areco.","img":{"id":"L13","cap":"El partido de San Andrés de Giles en la provincia de Buenos Aires.","kind":"plano","fy":0.5}},{"y":1834,"t":"Último encuentro de Rosas y Quiroga en La Merced","d":"En diciembre Rosas y Facundo Quiroga se ven por última vez en la estancia de Figueroa; Quiroga es asesinado en Barranca Yaco en febrero de 1835.","L":"c","conf":"alta","src":["https://normas.gba.gob.ar/documentos/VG8N7uM0.html"],"v":"+","img":{"id":"L07","cap":"Facundo Quiroga, retrato de Fernando García del Molino, 1839.","kind":"epoca","fy":0.3}},{"y":1840,"t":"Lavalle acampa en Giles","d":"En su campaña contra Rosas, Juan Lavalle acampa en Giles rumbo a Buenos Aires.","L":"x","conf":"media","src":["https://www.diagonales.com/municipio/san-andres-de-giles--211-anos-de-existencia_a6213a33c5e6cc543af4a1e44"],"v":"+"},{"y":1841,"t":"Finaliza la construcción del 1º Templo","n":"Inaugurado en 1845","L":"p","v":"+","fix":"Las fuentes no coinciden: la historia local da el 27 de diciembre de 1841 como inauguración del nuevo templo y 1845 como reemplazo del oratorio; otra fuente menciona una iglesia de 1840 y otra habilitada en 1864.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1852,"t":"Inauguración del 3º Cementerio","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Inaugurado el 12 de julio de 1852 en Etcheverry, entre San Lorenzo e Ituzaingó."},{"y":1854,"t":"Creación de la Escuela Normal","n":"Constitución de la «Comisión Municipal»","L":"p","v":"+","fix":"En 1854 no hubo Escuela Normal: ese año se creó la primera escuela oficial, con clases para varones y niñas. El 6 de abril se constituyó la primera Comisión Municipal. Una Escuela Normal Popular funcionó recién en 1908, y la formación de maestros llegó en 1952.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1855,"t":"Primera elección de municipales","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 11 de marzo de 1855. En febrero se habían dado nombre a las calles y a la Plaza de la Constitución."},{"y":1856,"t":"Visita del obispo Escalada","n":"Puesta de la Cruz","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 21 de octubre el obispo Mariano José de Escalada preside la procesión que erige la cruz.","img":{"id":"L11","cap":"Mariano José de Escalada, obispo de Buenos Aires. Grabado del siglo XIX.","kind":"epoca","fy":0.35}},{"y":1859,"t":"Primer alumbrado público","n":"A sebo","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Alumbrado público con velas de sebo."},{"y":1865,"t":"Límites del Partido","n":"Por decreto provincial, junto con otros partidos","L":"c","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Límites definitivos fijados bajo el gobierno de Mariano Saavedra; la historia local da 1864 o 1865.","img":{"id":"M3","cap":"Mapa de la provincia de Buenos Aires, de los ingenieros Silveyra y Duclout, 1890.","kind":"plano","fy":0.45}},{"y":1865,"t":"Edificios para las escuelas de varones y de niñas","d":"Se inauguran edificios escolares separados, en el terreno cedido el año anterior por el juez de paz Eustaquio Sosa.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1867,"t":"Habilitación del Edificio Municipal","n":"Actual esquina del Correo","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Primer edificio municipal, en San Martín y Moreno; alojaba también la Comisaría y el Juzgado de Paz."},{"y":1868,"t":"Epidemia de cólera","L":"p","v":"-","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Junto con la fiebre amarilla de 1871, motivó la construcción de un nuevo cementerio, el Sud."},{"y":1869,"t":"Primer censo nacional: 3.820 habitantes","d":"Entre los extranjeros del partido predominan los británicos, seguidos por italianos, españoles y franceses.","L":"c","conf":"media","src":["https://infociudad.com.ar/2022/05/20/como-fue-el-primer-censo-en-san-andres-de-giles/"],"v":"+","img":{"id":"L15","cap":"Peones de una estancia de Baradero, partido vecino, en 1883.","kind":"epoca","fy":0.45}},{"y":1871,"t":"Epidemia de fiebre amarilla","L":"p","v":"-","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"La misma epidemia que golpeó a Buenos Aires."},{"y":1872,"t":"Puente de hierro sobre la Cañada de Giles","d":"Se habilita un puente metálico en el viejo camino a Mendoza, que mejora el cruce de tropas y carretas.","L":"c","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1873,"t":"Reemplazo del alumbrado público","n":"Faroles a querosene","L":"p","v":"+"},{"y":1875,"t":"Inauguración del 4º cementerio","n":"Hoy cementerio «viejo»","L":"p","v":"+","fix":"El Cementerio Sud, hoy «viejo», se terminó el 29 de noviembre de 1873 y se inauguró en la Pascua de 1874. Se clausuró en 1919.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/cementerio_sud.pdf"]},{"y":1876,"t":"Donación del terreno para la 2ª plaza","n":"Hoy plaza Saraví","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 1 de agosto se inaugura la Plaza Colón, hoy Saraví, en terreno donado por Julio Saraví. Ese año funciona también un registro civil municipal."},{"y":1877,"t":"Inauguración del Telégrafo","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Primera oficina de telégrafo; la fuente local da septiembre o noviembre."},{"y":1877,"t":"Construcción de los primeros alambrados","L":"c","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El primer alambrado de campo del partido. Cerrar los campos fijó la propiedad, ordenó la hacienda y cambió el paisaje abierto de la llanura.","img":{"id":"L14","cap":"Recorriendo la estancia, de Prilidiano Pueyrredón, 1865.","kind":"epoca","fy":0.5}},{"y":1880,"t":"Primera estación de ferrocarril","n":"Azcuénaga","L":"c","v":"+","src":["https://es.wikipedia.org/wiki/Estaci%C3%B3n_Azcu%C3%A9naga"],"d":"Habilitada el 1 de abril de 1880 por el Ferrocarril Oeste, entonces de la Provincia, en el ramal Luján–Pergamino. Luego pasó al Central Argentino y a la línea Mitre; el tren de pasajeros dejó de pasar en 1978.","img":{"id":"L16","cap":"Carretas descargando en una estación de tren, hacia 1890. Archivo General de la Nación.","kind":"epoca","fy":0.5}},{"y":1881,"t":"Creación de la Comisaría","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"En Moreno y San Martín; se mudó a su sede actual en 1932."},{"y":1883,"t":"Sociedad Italiana de Socorros Mutuos","d":"Los inmigrantes italianos fundan la sociedad «Porvenir de Italia» el 22 de julio; la piedra fundamental de su sede se coloca en 1890.","L":"p","conf":"alta","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1884,"t":"Asociación Española de Socorros Mutuos","n":"Comienzos del Banco Provincia; inauguración de la Capilla Mte. de Novi","L":"p","v":"+","fix":"La capilla de Monte de Novi, del barrio de la Rawson, tiene fecha incierta: la historia local da 1844, 1884 y 1900.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"La Asociación Española se funda el 18 de mayo. El Banco Provincia abre su sucursal el 16 de abril, primera institución de crédito local; quiebra en 1893 y reabre en 1909."},{"y":1884,"t":"Límites del Ejido urbano","n":"Proyecto de ampliación del Ejido","L":"p","v":"+","fix":"No se halló fuente publicada para este dato. La historia local indica que hasta 1936 la calle Rawson era el límite de la planta urbana."},{"y":1884,"t":"Estación Franklin del Ferrocarril Pacífico","d":"El paraje Franklin nace con su estación, entre Mercedes y Chacabuco; las fuentes la fechan entre octubre de 1884 y 1885.","L":"c","conf":"media","src":["https://es.wikipedia.org/wiki/Franklin_(Buenos_Aires)"],"v":"+"},{"y":1886,"t":"Primer Intendente Municipal","n":"Julio Saraví","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"Primer intendente bajo la Ley Orgánica de Municipalidades."},{"y":1886,"t":"Sale El Censor, primer periódico local","d":"Aparece el 12 de septiembre; en 1895 le sigue La Voz de Giles.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1887,"t":"Creación de la Oficina del Correo","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"La historia local ubica en 1887 la llegada del servicio de correo; hubo una estafeta desde 1872. El edificio actual del Correo es de 1938.","img":{"id":"L27","cap":"El Correo en San Martín y Moreno, edificio de 1938. Foto de 2016.","kind":"hoy","fy":0.5}},{"y":1888,"t":"Creación del Registro Civil","L":"p","v":"+","src":["https://normas.gba.gob.ar/ar-b/ley/1888/2114/13502"],"d":"La Ley provincial 2114 creó el Registro Civil bonaerense y ese año abrió la oficina local."},{"y":1889,"t":"Llegada del Tranway Rural a Giles","n":"En 1897 pasa a FC Rural de la Provincia","L":"c","v":"+","src":["https://es.wikipedia.org/wiki/Ferrocarril_Central_de_Buenos_Aires"],"d":"El 24 de mayo llega el primer tren, a caballo, del Tranway Rural de Federico Lacroze. La tracción a vapor llega en 1892.","img":{"id":"L17","cap":"Coche de la Compañía Lacroze, hacia 1890.","kind":"epoca","fy":0.5}},{"y":1889,"t":"Nace Villa Ruiz con su estación","d":"El 24 de mayo llega el primer tren a caballo del Tranway Rural a la estación Ruiz, en tierras donadas por Lorenzo T. Ruiz y Gerónima Cucullú para la estación y el pueblo.","L":"c","conf":"alta","src":["https://es.wikipedia.org/wiki/Villa_Ruiz"],"v":"+","img":{"id":"L19","cap":"Estación Ruiz del antiguo Tranway Rural, en Villa Ruiz. Foto de 2009.","kind":"hoy","fy":0.5}},{"y":1891,"t":"Epidemia de viruela en el campo","d":"La viruela afecta sobre todo a la población rural del partido.","L":"c","v":"-","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1892,"t":"Surgen pueblos rurales","n":"Villa Ruiz, luego Franklin, Cucullú…","L":"c","v":"+","fix":"Los pueblos rurales no surgieron juntos sino uno tras otro, con cada estación: Azcuénaga 1880, Franklin 1884, Villa Ruiz 1889, Heavy 1892, Solís 1894, Cucullú 1898, Tuyutí y Espora 1911, Villa Espil 1936.","src":["https://es.wikipedia.org/wiki/Villa_Ruiz","https://es.wikipedia.org/wiki/Franklin_(Buenos_Aires)"],"img":{"id":"P1890","cap":"Plano del partido hacia 1890, con estancias, postas, pulperías y puestos. Base de la Dirección de Geodesia; fotografía del archivo de J. P. Addesso.","kind":"plano","fy":0.5}},{"y":1892,"t":"El tren a vapor llega hasta Heavy","d":"El 17 de diciembre se habilita el tramo Giles–Heavy, con la parada Km 108. El nombre de la estación se atribuye por tradición al hacendado irlandés Patricio Heavy.","L":"c","conf":"alta","src":["https://es.wikipedia.org/wiki/Ferrocarril_Central_de_Buenos_Aires"],"v":"+","img":{"id":"L20","cap":"Estación Heavy del ramal Lacroze–Rojas. Foto de 2012.","kind":"hoy","fy":0.5}},{"y":1892,"t":"El partido se vuelve agrícola","d":"Las siembras suman unas 18.000 ha de trigo, 12.000 de maíz, 3.500 de lino, 2.000 de alfalfa y 1.200 de cebada.","L":"c","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+","img":{"id":"L21","cap":"Trilla en la provincia de Buenos Aires, entre 1908 y 1919.","kind":"epoca","fy":0.5}},{"y":1893,"t":"Quiebra y cierra el Banco Provincia local","d":"Tras la crisis de 1890 la sucursal cierra; reabre recién en 1909.","L":"p","v":"-","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1894,"t":"Estación Solís, en la estancia de Roca","d":"El 16 de julio se habilita la estación del Ferrocarril Central Argentino, ramal Victoria–Pergamino, en tierras de la estancia La Argentina de Julio A. Roca.","L":"c","conf":"alta","src":["https://es.wikipedia.org/wiki/Sol%C3%ADs_(Buenos_Aires)"],"v":"+","img":{"id":"L22","cap":"Estación Solís, ex Ferrocarril Central Argentino. Foto de 2011.","kind":"hoy","fy":0.5}},{"y":1895,"t":"Nuevo brote de cólera","d":"La epidemia causa numerosas víctimas; se perfora un pozo semisurgente en la plaza para mejorar el agua.","L":"p","v":"-","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1898,"t":"Alumbrado eléctrico","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 8 de junio de 1898. Es distinto de la usina, instalada en 1911."},{"y":1898,"t":"Cucullú nace de una donación ferroviaria","d":"El 29 de octubre Juan Simón de Cucullú cede tierras para una estación del ferrocarril de Lacroze y para el pueblo; otra fuente fecha la cesión en 1899.","L":"c","conf":"media","src":["https://es.wikipedia.org/wiki/Cucull%C3%BA","https://normas.gba.gob.ar/documentos/BdR9P4s7.html"],"v":"+","img":{"id":"L23","cap":"Estación Cucullú. Foto de 2018.","kind":"hoy","fy":0.5}},{"y":1900,"t":"Biblioteca Popular Alberdi","d":"Se funda la biblioteca, que en 1927 se instala en su local de 25 de Mayo y Belgrano.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1901,"t":"Roca dona tierras para el pueblo de Solís","d":"Frente a la estación se lotea el pueblo; en 1906 abre la Escuela N.º 8, también en terreno donado.","L":"c","conf":"media","src":["https://es.wikipedia.org/wiki/Sol%C3%ADs_(Buenos_Aires)"],"v":"+"},{"y":1904,"t":"Construcción del Hospital de Caridad","n":"Inaugurado en 1905","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/libro_hospital_texto.pdf"],"d":"Obra iniciada en terreno donado por José Pichetto y habilitada el 5 de septiembre de 1905. Desde 1976 depende directamente del Municipio."},{"y":1906,"t":"Monumento a Mitre en el Tiro Federal","d":"El 30 de noviembre se inaugura un monumento a Bartolomé Mitre que la historia local señala como el primero del país.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1908,"t":"Inauguración del Palacio Municipal y la Escuela Nº 1","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El Palacio Municipal, proyecto del arquitecto Fernando Ortiz, se habilitó el 30 de noviembre de 1908 y se inauguró oficialmente el 25 de mayo de 1910.","img":{"id":"L24","cap":"Palacio Municipal, Moreno 338. Foto de 2016.","kind":"hoy","fy":0.45}},{"y":1911,"t":"Estaciones Tuyutí y Espora","d":"La Compañía General de Ferrocarriles habilita estaciones en el partido sobre su línea a Rosario: Tuyutí, Espora y el Km 125 «La Valerosa».","L":"c","conf":"media","src":["https://es.wikipedia.org/wiki/Estaci%C3%B3n_Tuyut%C3%AD","https://infociudad.com.ar/2023/02/07/historia-del-ferrocarril-en-san-andres-de-giles/"],"v":"+","img":{"id":"L25","cap":"Estación Tuyutí. Foto de 2007.","kind":"hoy","fy":0.5}},{"y":1912,"t":"Inauguración del Monumento a San Martín","n":"Inauguración del Mercado Municipal y la Usina Eléctrica","L":"p","v":"+","fix":"La usina eléctrica se instaló en 1911 y el Mercado Municipal se inauguró en 1913.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El 30 de noviembre se inaugura el monumento, coronado por una Estatua de la Libertad del escultor Torcuato Tasso; la plaza pasa a llamarse San Martín.","img":{"id":"L26","cap":"La Estatua de la Libertad que corona el monumento de la plaza San Martín. Foto de 2016.","kind":"hoy","fy":0.3}},{"y":1914,"t":"Censo de 1914: 11.712 habitantes","d":"Hay 1.594 italianos y 690 españoles, entre otras procedencias: es el pico de la inmigración europea en el partido.","L":"c","conf":"media","src":["https://infociudad.com.ar/2022/05/20/como-fue-el-primer-censo-en-san-andres-de-giles/"],"v":"+","img":{"id":"L28","cap":"Niños en el Hotel de Inmigrantes de Buenos Aires, 1912. Archivo General de la Nación.","kind":"epoca","fy":0.4}},{"y":1914,"t":"Colegio Nuestra Señora de Luján","d":"A pedido de familias irlandesas abre el 1 de abril; su edificio actual es de 1919.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1918,"t":"Lillia, primer intendente por voto universal","d":"El médico Fernando C. Lillia es el primer intendente elegido bajo la ley Sáenz Peña; ese año la luz eléctrica se extiende hasta la medianoche.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1919,"t":"Inauguración del nuevo cementerio","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/cementerio_norte.pdf"],"d":"Se inaugura el Cementerio Norte, con planos del arquitecto Luis B. Rocca, y se cierra definitivamente el Sud."},{"y":1927,"t":"Compra en remate de las tierras del Parque Municipal","L":"p","v":"+","fix":"No se confirmó que la compra fuera en remate: la fuente local indica que la Municipalidad compró el predio a José Pichetto.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"El predio del actual Parque Municipal, hoy Fernando Lillia, se arboló y urbanizó hacia 1930."},{"y":1930,"t":"Comienzo de la pavimentación","n":"Fundación del Club Colegiales","L":"p","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/historia_del_instituto_jorge_eduardo_coll-_orfilio_latorre.pdf"],"d":"A mediados de 1930 empieza el pavimento en la avenida Rivadavia, sobre una ordenanza de 1925; con bonos municipales se llegó a unas 60 cuadras céntricas."},{"y":1931,"t":"Capilla y maternidad del hospital","d":"El 20 de septiembre se inauguran la capilla y el pabellón de maternidad, con proyecto del arquitecto Domingo Sanz.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/libro_hospital_texto.pdf"],"v":"+"},{"y":1932,"t":"El Concejo Deliberante resuelve pavimentar 29 cuadras","n":"Se propone pavimentar la Av. Scully","L":"p","v":"+","fix":"No se halló la resolución de las 29 cuadras. La avenida recibió el nombre de Lucas Scully en 1923."},{"y":1933,"t":"Creación de la 3ª plaza, «Mitre»","n":"Av. Rivadavia con bulevar hasta la nueva Ruta 7","L":"p","v":"+","fix":"La Plaza Mitre existe, en el barrio de la Rawson, pero no se halló la fecha de su creación.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/libro_hospital_texto.pdf"],"d":"El 14 de septiembre el Concejo impulsa la apertura de la avenida Rivadavia, hoy Cámpora, hacia la nueva Ruta 7."},{"y":1935,"t":"Plagas de langosta","d":"En las décadas de 1930 y 1940 se repiten las invasiones de langosta sobre los cultivos del partido.","L":"c","v":"-","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1936,"t":"Inauguración de la Ruta Nacional 7","L":"c","v":"+","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"d":"La ruta llega a Giles el 5 de octubre de 1936, Día del Camino. Su asfalto por el partido se gestionó hacia 1938."},{"y":1936,"t":"Fundación de Villa Espil sobre la Ruta 7","d":"El Concejo acepta en septiembre la donación de Alberto Espil y el 22 de octubre se pone la piedra fundamental del pueblo, que lleva el nombre de su padre, el ex intendente Felipe S. Espil.","L":"c","conf":"alta","src":["https://es.wikipedia.org/wiki/Villa_Espil"],"v":"+"},{"y":1937,"t":"Declaración de Ciudad","L":"p","v":"+","src":["https://normas.gba.gob.ar/ar-b/ley/1937/4648/10597"],"d":"La Ley provincial 4648, promulgada el 31 de diciembre de 1937, declara ciudad al pueblo de San Andrés de Giles."},{"y":1938,"t":"Hogar infantil en el Parque Municipal","d":"Se termina el hogar de niños, hoy Instituto Jorge E. Coll, que recibe sus primeros internados en noviembre.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/historia_del_instituto_jorge_eduardo_coll-_orfilio_latorre.pdf"],"v":"+"},{"y":1938,"t":"Escuela N.º 19 en Villa Espil","d":"El 8 de julio se inaugura la escuela del nuevo pueblo, en un lote de la donación de Espil; en 1939 se forma la Sociedad de Fomento.","L":"c","conf":"alta","src":["https://intranet.hcdiputados-ba.gov.ar/proyectos/11-12D1582012018-07-1112-43-51.pdf"],"v":"+"},{"y":1938,"t":"Primer libro municipal de historia local","d":"La Municipalidad publica «San Andrés de Giles: origen y principales hechos de su evolución», con las memorias de Vicente Cutillas.","L":"p","conf":"alta","src":["https://segreti.puntobiblio.com/bib/2175"],"v":"+"},{"y":1940,"t":"Empiezan los hornos de ladrillo de Cucullú","d":"La fabricación artesanal de ladrillos llegaría a unos 150 hornos, con mano de obra migrante del Litoral.","L":"c","conf":"media","src":["https://normas.gba.gob.ar/documentos/BdR9P4s7.html"],"v":"+","img":{"id":"L29","cap":"Ladrilleros en General Madariaga, 1922.","kind":"epoca","fy":0.5}},{"y":1944,"t":"Héctor J. Cámpora, comisionado municipal","d":"El odontólogo, radicado en Giles desde 1934, ejerce la intendencia entre 1944 y 1945.","L":"p","conf":"alta","src":["https://es.wikipedia.org/wiki/H%C3%A9ctor_Jos%C3%A9_C%C3%A1mpora"],"v":"+","img":{"id":"L30","cap":"Héctor J. Cámpora.","kind":"epoca","fy":0.3}},{"y":1945,"t":"Primer secundario: Colegio Fray Mamerto Esquiú","d":"Por iniciativa de jóvenes que no podían seguir estudiando abre el primer secundario de Giles, germen del Colegio Nacional.","L":"p","conf":"alta","src":["https://noticiasgilenses.com.ar/el-colegio-nacional-de-san-andres-de-giles-cumple-75-anos/"],"v":"+"},{"y":1945,"t":"Se funda el periódico La Libertad","d":"Nace el 4 de noviembre y sigue publicándose.","L":"p","conf":"media","src":["https://es.wikipedia.org/wiki/San_Andr%C3%A9s_de_Giles"],"v":"+"},{"y":1947,"t":"El Mercado Municipal pasa a ser terminal de ómnibus","d":"Decae el mercado de 1913 y su edificio se reconvierte en terminal de colectivos.","L":"p","conf":"media","src":["https://www.alepolvorines.com.ar/Localidades/SanAndresdeGiles.htm"],"v":"+"},{"y":1948,"t":"Colegio Nacional «Eva Perón»","n":"Inaugurado en 1952 · División rural «El Candil»","L":"p","v":"+","fix":"El Candil es un paraje del partido sobre la Ruta 8; no se halló fuente sobre una división rural en 1948.","src":["https://noticiasgilenses.com.ar/el-colegio-nacional-de-san-andres-de-giles-cumple-75-anos/"],"d":"El 5 de julio el secundario privado Fray Mamerto Esquiú, abierto en 1945, se convierte en Colegio Nacional. El edificio propio se inaugura en 1952, con un anexo de magisterio; en 1955 recupera el nombre de Fray Mamerto Esquiú."},{"y":1949,"t":"Nacionalización: el ferrocarril pasa al Urquiza","d":"El Estado toma el Ferrocarril Central de Buenos Aires, heredero del Tranway Rural, y lo integra al Ferrocarril General Urquiza.","L":"x","conf":"alta","src":["https://es.wikipedia.org/wiki/Ferrocarril_Central_de_Buenos_Aires"],"v":"+","img":{"id":"L18","cap":"Estación Chacarita del Tranway Rural, cabecera porteña de la línea que llegaba a Giles, fines de la década de 1880.","kind":"epoca","fy":0.5}},{"y":1952,"t":"Nuevo edificio del Club Almafuerte","L":"p","v":"+","fix":"La historia local ubica en 1953 la inauguración del edificio. El club se fundó en 1935.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1956,"t":"Fundación del Aero Club","d":"Se funda el 6 de mayo.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1960,"t":"Capillas rurales en Villa Espil y Cucullú","d":"Se inauguran la capilla San Felipe de Villa Espil y la de Santa Teresita en Cucullú; en la ciudad se pavimenta la calle Rawson.","L":"c","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1961,"t":"Creación del Cuerpo de Bomberos","L":"p","v":"+","fix":"El Cuerpo de Bomberos Voluntarios se creó el 19 de julio de 1968.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"]},{"y":1961,"t":"Plan Larkin: primer recorte del ramal","d":"Se clausura el tramo más allá de Rojas de la línea que pasa por Giles, primer corte de una red que cerraría en 1993.","L":"x","v":"-","conf":"alta","src":["https://es.wikipedia.org/wiki/Ferrocarril_Central_de_Buenos_Aires"]},{"y":1965,"t":"1ª etapa del nuevo Templo Parroquial","n":"Instalación de aguas corrientes","L":"p","v":"+","fix":"No se hallaron fuentes publicadas para este dato; la historia local solo registra una refacción del templo en 1946.","img":{"id":"L09","cap":"Torre de la parroquia San Andrés Apóstol. Foto de 2016.","kind":"hoy","fy":0.35}},{"y":1966,"t":"Se funda el Rotary Club","d":"Nace el 8 de marzo; en 1970 impulsará el Monumento a la Madre en la Plaza Saraví.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1967,"t":"Gran crecida del río Luján","d":"En octubre el río alcanza 5,85 m. Giles integra la cuenca, aunque las fuentes no detallan los daños en el partido.","L":"x","v":"-","conf":"media","src":["https://gba.gob.ar/hidraulica/conurbano_y_area_metropolitana/cuenca_rio_lujan"]},{"y":1968,"t":"Pileta y vestuarios en el Parque","L":"p","v":"+","fix":"No se halló fuente publicada para este dato."},{"y":1970,"t":"Circuito automovilístico en el Parque Municipal","L":"p","v":"+","fix":"La historia local menciona el circuito del Parque Municipal, pero sin fecha."},{"y":1972,"t":"Construcción del Banco Nación y el Club Social","n":"Club Albatros","L":"p","v":"+","fix":"No se halló fuente para la sucursal del Banco Nación. El Club Social se fundó en 1908, así que en 1972 se trataría de un edificio nuevo."},{"y":1973,"t":"Un vecino de Giles en la Presidencia","d":"Héctor J. Cámpora asume la Presidencia el 25 de mayo; tras renunciar en julio vuelve a su casa de Giles.","L":"x","conf":"alta","src":["https://es.wikipedia.org/wiki/H%C3%A9ctor_Jos%C3%A9_C%C3%A1mpora"],"v":"+"},{"y":1975,"t":"Profesorado de enseñanza primaria","d":"Se crea como anexo del Colegio Nacional; es el primer nivel terciario de la ciudad.","L":"p","conf":"alta","src":["https://isfd142-bue.infd.edu.ar/sitio/upload/ISFD142-1-Mayo4-.pdf"],"v":"+"},{"y":1976,"t":"Golpe militar: represión en Giles","d":"El 24 de marzo un grupo militar irrumpe en la casa de Cámpora, que logra asilarse en la embajada de México. En junio es secuestrado el escritor gilense Dardo Dorronzoro, que permanece desaparecido.","L":"x","v":"-","conf":"alta","src":["https://es.wikipedia.org/wiki/H%C3%A9ctor_Jos%C3%A9_C%C3%A1mpora","https://es.wikipedia.org/wiki/San_Andr%C3%A9s_de_Giles"],"img":{"id":"L31","cap":"La casa de Héctor J. Cámpora en San Martín 787. Foto de 2016.","kind":"hoy","fy":0.5}},{"y":1977,"t":"Escuela Técnica en la ex Sociedad Italiana","d":"La Escuela de Educación Técnica empieza a funcionar en la antigua sede social italiana.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1978,"t":"Azcuénaga pierde el tren de pasajeros","d":"Cesa el servicio de pasajeros en el ramal Luján–Pergamino que daba vida al pueblo.","L":"c","v":"-","conf":"media","src":["https://es.wikipedia.org/wiki/Estaci%C3%B3n_Azcu%C3%A9naga"],"img":{"id":"L32","cap":"Estación Azcuénaga. Foto de 2016.","kind":"hoy","fy":0.5}},{"y":1980,"t":"Red de gas natural","n":"Papelera San Andrés","L":"p","v":"+","fix":"La fecha de llegada del gas natural no se halló en fuentes publicadas.","src":["https://www.e80group.com/en/smart-factory/papelera-san-andr%C3%A9s-de-giles"],"d":"La Papelera San Andrés de Giles se fundó en 1980; hoy es una planta de unos 42.000 m² cubiertos."},{"y":1980,"t":"Primera etapa del nuevo hospital","d":"A fines de 1980 se habilita el primer sector del hospital nuevo, levantado sobre parte del edificio antiguo.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/libro_hospital_texto.pdf"],"v":"+"},{"y":1982,"t":"Malvinas: muere el soldado gilense Jorge Maciel","d":"La vieja estación ferroviaria es hoy sede del Centro de Combatientes.","L":"x","v":"-","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"img":{"id":"L33","cap":"La vieja estación de Giles, hoy sede del Centro de Combatientes. Foto de 2013.","kind":"hoy","fy":0.5}},{"y":1983,"t":"Red cloacal","L":"p","v":"+","fix":"No se halló fuente publicada para este dato. En 2001 solo el 10,5% de los hogares del partido tenía desagüe a red cloacal; en 2022, el 44,5%.","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/informe_poblacion_vivienda_sag.pdf"]},{"y":1983,"t":"Vuelve la democracia: asume Julio César Rossi","d":"Con la recuperación democrática asumió el primer intendente electo desde 1983, para el período 1983–1987.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=intendente"],"v":"+"},{"y":1984,"t":"El Cementerio Norte, único del partido","d":"La Ordenanza 105 lo fija como único lugar de inhumación.","L":"p","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/cementerio_norte.pdf"],"v":"+"},{"y":1985,"t":"Inundaciones récord en la cuenca del Luján","d":"En mayo y noviembre el río registra sus mayores alturas históricas, 6,25 y 6,40 m, en una cuenca que incluye al partido.","L":"x","v":"-","conf":"media","src":["https://gba.gob.ar/hidraulica/conurbano_y_area_metropolitana/cuenca_rio_lujan"]},{"y":1987,"t":"Asume Aldo Hugo Nascimbene","d":"Fue electo cuatro veces (1987, 1991, 1995 y 1999) y gobernó hasta su renuncia por motivos de salud en octubre de 2001.","L":"p","conf":"alta","src":["http://hcdsanandresdegiles.blogspot.com/2010/04/15101-renuncia-de-aldo-hugo-nascimbene.html"],"v":"+"},{"y":1988,"t":"La Merced, monumento histórico municipal","d":"El 7 de junio el Concejo declara monumento histórico municipal a la estancia La Merced, la Posta de Figueroa.","L":"c","conf":"alta","src":["https://normas.gba.gob.ar/documentos/VG8N7uM0.html"],"v":"+"},{"y":1991,"t":"Terapia intensiva y hemodiálisis en el Hospital","d":"El Hospital Municipal habilitó una terapia intensiva de seis camas y el servicio de hemodiálisis. Fue parte de una etapa de ampliación que siguió con el tomógrafo (1995) y el helipuerto (1999).","L":"p","conf":"alta","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/libro_hospital_texto.pdf"],"v":"+"},{"y":1991,"t":"Los restos de Héctor J. Cámpora llegan a Giles","d":"El 9 de diciembre los restos del expresidente, vecino de Giles, fueron repatriados desde México y depositados en el cementerio local. En 2021 su sepulcro fue declarado patrimonio cultural.","L":"p","conf":"alta","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+"},{"y":1991,"t":"Monumento a Mitre en la plaza homónima","d":"El 30 de noviembre se inauguró el monumento a Bartolomé Mitre en la plaza creada en 1933.","L":"p","conf":"alta","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/sintesis_historica_1930-1940_en_el_recuerdo_realidad_educativa_hoy_en_san_andres_de_giles_hector_f._felice.pdf"],"v":"+","img":{"id":"L39","cap":"Monumento a Mitre. Foto de 2013.","kind":"hoy","fy":0.4}},{"y":1992,"t":"Hospitales y escuelas nacionales pasan a la Provincia","d":"La transferencia de servicios de salud y educación desde la Nación cambió la gestión local; el informe estadístico municipal la registra como un hito.","L":"x","conf":"media","src":["https://www.sanandresdegiles.gob.ar/sites/default/files/informe_estadistico_-enfoque_integral_de_san_andres_de_giles_desde_una_mirada_provincial.pdf"],"v":"+"},{"y":1992,"t":"Decreto 1168/92: se suprimen los trenes interurbanos","d":"La Nación ordenó suprimir los servicios interurbanos de pasajeros o transferirlos a las provincias. Es el marco del cierre de los ramales que atravesaban el partido.","L":"x","v":"-","conf":"alta","src":["https://es.wikipedia.org/wiki/Ferrocarril_General_Urquiza","https://www.losandes.com.ar/el-ultimo-tren-pasaron-25-anos-y-muchas-promesas"]},{"y":1993,"t":"Cierre del Ferrocarril Urquiza","L":"c","v":"-","src":["https://es.wikipedia.org/wiki/Ramal_F%C3%A1tima-Rojas-4_de_Febrero_del_Ferrocarril_General_Urquiza"],"d":"El 21 de noviembre pasó el último tren de pasajeros del ramal, heredero del Tranway Rural de 1889. Villa Ruiz, Cucullú, Giles y Heavy quedaron sin servicio.","img":{"id":"L37","cap":"Estación San Andrés de Giles. Foto de 2008.","kind":"hoy","fy":0.5}},{"y":1994,"t":"Adhesión a la promoción industrial","d":"La Ordenanza 166/1994 adhirió al régimen de promoción industrial, antecedente del sector industrial municipal.","L":"p","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=industrial"],"v":"+"},{"y":1996,"t":"Primera ordenanza de ordenamiento territorial","d":"La Ordenanza 327/1996, «Ordenamiento territorial y uso del suelo», es el antecedente del código de 2001.","L":"p","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=ordenamiento"],"v":"+"},{"y":1996,"t":"El Municipio toma las estaciones abandonadas","d":"Por convenios de tenencia pasaron al Municipio las estaciones de Villa Ruiz, Heavy y Cucullú (Ord. 283/1996) y luego las de Azcuénaga y Solís (Ord. 360/1997).","L":"c","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=ferrocarril"],"v":"+","img":{"id":"L36","cap":"Estación Azcuénaga. Foto de 2008.","kind":"hoy","fy":0.5}},{"y":1998,"t":"Pasa el último tren de carga del ramal Lacroze–Rojas","d":"Desde entonces la vía que unía Villa Ruiz, Cucullú, Giles y Heavy quedó sin tráfico.","L":"c","v":"-","conf":"media","src":["https://es.wikipedia.org/wiki/Estaci%C3%B3n_San_Andr%C3%A9s_de_Giles","https://es.wikipedia.org/wiki/Estaci%C3%B3n_Cucull%C3%BA"],"img":{"id":"L34","cap":"Cartel de la estación Heavy. Foto de 2012.","kind":"hoy","fy":0.5}},{"y":1998,"t":"La casa Méndez aloja el complejo museográfico","d":"La Ordenanza 451/1998 dispuso el uso de la ex casa Méndez como complejo museográfico; en 1999 abrió también el Museo del Recado Yancamil.","L":"p","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=museo"],"v":"+"},{"y":2000,"t":"Nace la Fiesta del Chancho Asado con Pelo","d":"Empezó en enero de 2000 en un potrero barrial con unas 350 personas, pasó al Parque Municipal y llegó a reunir más de diez mil. Se hizo hasta 2006.","L":"p","conf":"alta","src":["https://bichosdecampo.com/historico-trabajador-rural-en-san-andres-de-giles-juan-santos-ferrarotti-atesora-los-dias-gloriosos-de-la-fiesta-del-chancho-asado-con"],"v":"+"},{"y":2000,"t":"Primeros lotes del Sector Industrial","d":"La Ordenanza 646/2000 cedió lotes en el Sector Industrial municipal, que se amplió en 2004 junto a la Ruta 7.","L":"p","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=industrial"],"v":"+"},{"y":2001,"t":"Aprobación del Plan Estratégico Urbano y Territorial","L":"p","v":"+","src":["https://hcdsanandresdegiles.com.ar/?s=codigo"],"d":"El Concejo sancionó la Ordenanza 652/2001, Código de Planeamiento Urbano, y la Resolución 190/01, que pide aprobar el plan de ordenamiento urbano y territorial."},{"y":2001,"t":"Asume Eduardo Mario Díaz","d":"Tras la renuncia de Nascimbene en octubre, completó el mandato hasta diciembre de 2003.","L":"p","conf":"alta","src":["https://sibom.slyt.gba.gob.ar/bulletins/11818/contents/2156719"],"v":"+"},{"y":2002,"t":"Normas de ordenamiento para el área rural","d":"La Ordenanza 745/2002 fijó lineamientos de ordenamiento para el área rural, complemento del código urbano de 2001.","L":"c","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=ordenamiento"],"v":"+"},{"y":2003,"t":"Asume Luis Alberto Ghione","d":"Fue electo en 2003, 2007 y 2011, y renunció en febrero de 2014.","L":"p","conf":"alta","src":["https://diariohoy.net/politica/renuncio-el-intendente-de-san-andres-de-giles-22492"],"v":"+"},{"y":2003,"t":"Primeras declaraciones de sitios patrimoniales","d":"La Ordenanza 883/2003 declaró lugares significativos y patrimonio artístico a sitios y obras del partido.","L":"p","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=patrimonio"],"v":"+"},{"y":2006,"t":"Bicentenario de San Andrés de Giles","d":"Se celebraron los 200 años de la primera misa del 30 de noviembre de 1806, que el partido toma como fecha fundacional.","L":"p","conf":"alta","src":["https://www4.hcdn.gob.ar/dependencias/dcomisiones/periodo-124/124-1664.pdf"],"v":"+"},{"y":2006,"t":"Reforma del Código de Planeamiento","d":"La Ordenanza 1103/2006 modificó el código urbano de 2001; se la sigue citando junto al código de 2021.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=codigo"],"v":"+"},{"y":2006,"t":"Fiesta del Camino Real en Villa Ruiz","d":"Declarada de interés municipal en 2006; en 2024 se incorporó al registro de patrimonio cultural del partido.","L":"c","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=fiesta"],"v":"+","img":{"id":"L41","cap":"Antigua estación de servicio en Villa Ruiz. Foto de 2023.","kind":"hoy","fy":0.5}},{"y":2011,"t":"Empiezan las obras de la autovía Ruta 7","d":"La conversión en autovía entre Luján y Giles arrancó en 2011 y se demoró varios años, con reclamos por la siniestralidad del tramo.","L":"c","conf":"media","src":["https://www.infocampo.com.ar/?p=334812"],"v":"+"},{"y":2014,"t":"Asume Carlos Puglelli","d":"Reemplazó a Ghione tras su renuncia; luego fue electo en 2015 y 2019.","L":"p","conf":"alta","src":["https://diariohoy.net/politica/renuncio-el-intendente-de-san-andres-de-giles-22492"],"v":"+"},{"y":2014,"t":"Convenio prevé una reserva en la Cañada de Giles","d":"La Ordenanza 1815/2014 homologó un convenio urbanístico que preveía un parque y reserva natural urbana en la Cañada, más lotes sociales.","L":"p","conf":"alta","src":["https://sibom.slyt.gba.gob.ar/bulletins/1104/contents/1224737"],"v":"+"},{"y":2014,"t":"Giles adhiere al Procrear","d":"El Municipio adhirió al programa nacional de crédito para vivienda y eximió de derechos de construcción a sus beneficiarios.","L":"p","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=procrear"],"v":"+"},{"y":2015,"t":"Inundaciones: emergencia agropecuaria","d":"Por las lluvias de agosto, la Provincia incluyó al partido en la emergencia o desastre agropecuario hasta diciembre.","L":"c","v":"-","conf":"alta","src":["https://www.infocampo.com.ar/?p=336778"]},{"y":2015,"t":"Se crea la Universidad Nacional de San Antonio de Areco","d":"La nueva universidad vecina dictaría años después diplomaturas en Giles.","L":"x","conf":"media","src":["https://ligadelconsorcista.org/noticia/creacion-dos-nuevas-universidades-leyes-27212-27213"],"v":"+"},{"y":2016,"t":"Habilitan la autopista Luján–Giles","d":"En marzo entró en servicio el primer tramo de la Ruta 7 como autopista, unos 31 km entre Luján y Giles.","L":"c","conf":"alta","src":["https://www.infocampo.com.ar/?p=362149","https://www.lanacion.com.ar/sociedad/mauricio-macri-maria-eugenia-vidal-inauguraron-40-nid2292700"],"v":"+"},{"y":2019,"t":"La variante de la Ruta 7 rodea la ciudad","d":"El 24 de junio se inauguraron 8 km de autopista que sacaron el tránsito pesado del casco y del cruce más peligroso.","L":"p","conf":"alta","src":["https://www.argentina.gob.ar/node/156377"],"v":"+"},{"y":2019,"t":"La autopista llega al acceso a Heavy","d":"El 30 de septiembre se habilitaron 20 km más, desde el fin de la variante hasta el acceso a Heavy.","L":"c","conf":"alta","src":["https://www.lanacion.com.ar/sociedad/mauricio-macri-maria-eugenia-vidal-inauguraron-40-nid2292700"],"v":"+","img":{"id":"L35","cap":"La Ruta 7 entre Giles y Heavy, octubre de 2019.","kind":"hoy","fy":0.5}},{"y":2019,"t":"Se crea el Consejo de Ordenamiento Territorial","d":"La Ordenanza 2239/2019 creó el Consejo Municipal para el Desarrollo y el Ordenamiento Territorial, ámbito de un nuevo plan estratégico.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=ordenamiento"],"v":"+"},{"y":2020,"t":"Primer caso de COVID-19 en Giles","d":"El 20 de marzo se confirmó el primer caso local; durante el año el distrito transitó las fases de aislamiento con aperturas reguladas por decreto.","L":"p","v":"-","conf":"alta","src":["https://www.lanoticia1.com/noticia/coronavirus-en-provincia-de-buenos-aires-en-san-andres-de-giles-primer-caso-confirmado-y-en-grave-120822.html"]},{"y":2020,"t":"La autopista se completa hasta Carmen de Areco","d":"En agosto se terminaron los últimos kilómetros hacia el acceso a Carmen de Areco; en diciembre se concluyó la variante.","L":"c","conf":"alta","src":["https://www.casarosada.gob.ar/pdf/Informe%20MOP%20Prensa_Inauguracion%20RN%207%20Chacabuco-Junin_02062021.pdf"],"v":"+"},{"y":2021,"t":"Código de Ordenamiento Urbano y Territorial","d":"El Municipio publicó el COUT 2021, precedido por una modificación del código en 2020 (Ord. 2309).","L":"p","conf":"media","src":["https://sanandresdegiles.gob.ar/sites/default/files/codigo_ordenamiento_2021.pdf"],"v":"+"},{"y":2021,"t":"Se crea el distrito Reserva Urbana Natural","d":"La Ordenanza 2418/2021 protegió el área como Distrito Reserva Urbana Natural; en 2022 se le asignaron cesiones para un parque de unas 15,8 ha.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=reserva","https://sibom.slyt.gba.gob.ar/bulletins/7504/contents/1769392"],"v":"+"},{"y":2021,"t":"Ola de declaraciones de patrimonio cultural","d":"Se declararon bienes patrimoniales el edificio de Lavalle y Moreno, los murales de Leonelli, el Deportivo Villa Espil, el sepulcro de Cámpora y elementos del equipamiento rural.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=patrimonio"],"v":"+"},{"y":2021,"t":"Asume Miguel Ángel Gesualdi","d":"En diciembre reemplazó a Puglelli, que pasó a la Legislatura provincial; fue electo en 2023 para el período 2023–2027.","L":"p","conf":"alta","src":["https://www.lanoticia1.com/noticia/quien-es-miguel-gesualdi-nuevo-intendente-de-san-andres-de-giles-134953","https://tribunadelpueblo.com.ar/2023/12/11/miguel-gesualdi-juro-como-intendente-de-san-andres-de-giles-para-el-periodo-2023-2027/"],"v":"+"},{"y":2021,"t":"Licitan la autovía de la Ruta 41","d":"Vialidad bonaerense licitó la duplicación de la Ruta 41 entre la Ruta 7 y la Ruta 8; la obra seguía en ejecución a comienzos de 2026.","L":"c","conf":"alta","src":["https://gba.gob.ar/node/33280","https://www.gba.gob.ar/node/44395"],"v":"+"},{"y":2022,"t":"Modificación del código urbano","d":"La Ordenanza 2551/2022 modificó el COUT 2021.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=2551"],"v":"+"},{"y":2022,"t":"Se protege el entorno del Colegio Nacional y la Plaza Saraví","d":"La Ordenanza 2526/2022 declaró bien patrimonial ese entorno urbano; el mismo año se incorporó la capilla de Tuyutí.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=patrimonio"],"v":"+"},{"y":2022,"t":"Primera Fiesta del Salame más largo","d":"El 3 de julio se hizo la primera edición, con un salame de unos 138 metros elaborado por una chacinería local.","L":"p","conf":"alta","src":["https://bichosdecampo.com/una-familia-que-se-fundio-trabajando-el-campo-y-se-refundo-haciendo-chacinados-en-san-andres-de-giles-se-volvera-a-realizar-este-domin"],"v":"+"},{"y":2022,"t":"Giles, «Capital Provincial del Chancho»","d":"La Legislatura bonaerense aprobó la declaración por la producción porcina del partido (Ley 15377).","L":"c","conf":"media","src":["https://infociudad.com.ar/2022/09/28/san-andres-de-giles-sera-capital-provincial-del-chancho/","https://normas.gba.gob.ar/documentos/BOZ991CQ.html"],"v":"+"},{"y":2022,"t":"Cucullú, «Capital Provincial del Hornero»","d":"Reconocimiento a sus hornos de ladrillo, que llegaron a ser unos 150 (Ley 15466).","L":"c","conf":"media","src":["https://legislativa.senado-ba.gov.ar/Carpeta_Sel_Normativas/20975-debates-1.pdf","https://normas.gba.gob.ar/documentos/BdR9P4s7.html"],"v":"+"},{"y":2022,"t":"Sequía: nueva emergencia agropecuaria","d":"El partido quedó entre los 33 distritos bonaerenses en emergencia agropecuaria por sequía en el segundo semestre.","L":"c","v":"-","conf":"alta","src":["https://bichosdecampo.com/declaran-la-emergencia-agropecuaria-por-sequia-en-33-partidos-de-la-provincia-de-buenos-aires"]},{"y":2023,"t":"Nueva secundaria rural en Cucullú","d":"Se inauguró el edificio de la Escuela Secundaria N.º 3 «René Favaloro» y el del Jardín N.º 915.","L":"c","conf":"alta","src":["https://gba.gob.ar/comunicacion_publica/gacetillas/kicillof_inaugur%C3%B3_nueva_infraestructura_escolar_en_san_andr%C3%A9s_de"],"v":"+"},{"y":2023,"t":"Ordenanza de manejo de la Reserva Urbana","d":"La Ordenanza 2619/2023 creó un Consejo de Administración para la reserva; el Concejo pidió conformarlo en 2023 y otra vez en 2025.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=2619"],"v":"+"},{"y":2023,"t":"Planta de aceite de soja con energía solar en Azcuénaga","d":"Una pyme inauguró sobre la Ruta 193 una planta de extrusión de soja de 250 toneladas diarias abastecida con energía solar.","L":"c","conf":"alta","src":["https://www.parlamentario.com/2023/06/30/ya-funciona-la-primera-planta-industrial-en-america-que-producira-aceite-de-soja-con-energia-solar/"],"v":"+"},{"y":2023,"t":"Lotes Procrear con prioridad para los pueblos","d":"La Ordenanza 2635/2023 destinó lotes al programa priorizando a vecinos de Cucullú y Villa Espil.","L":"p","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=procrear"],"v":"+"},{"y":2024,"t":"La estación de Villa Ruiz, patrimonio cultural","d":"La Ordenanza 2698/2024 incorporó el edificio de la ex estación al registro de patrimonio cultural del partido.","L":"c","conf":"alta","src":["https://hcdsanandresdegiles.com.ar/?s=ferrocarril"],"v":"+"},{"y":2025,"t":"Edificio propio para la Secundaria N.º 8","d":"En marzo empezó a funcionar el nuevo edificio de la EES N.º 8 «Félix Paladino», que dejó de compartir local con una primaria.","L":"p","conf":"alta","src":["https://www.gba.gob.ar/comunicacion_publica/gacetillas/la_provincia_de_buenos_aires_puso_en_funcionamiento_un_nuevo"],"v":"+"},{"y":2025,"t":"La reserva se llama «Las Dos Cañadas»","d":"En mayo, por votación vecinal y escolar, se eligió el nombre de la Reserva Urbana Natural del oeste de la ciudad.","L":"p","conf":"alta","src":["https://www.sanandresdegiles.gob.ar/?q=content%2Fya-tenemos-nombre-para-la-reserva-urbana-natural"],"v":"+"},{"y":2025,"t":"Abre el Centro Universitario de Giles","d":"El 6 de agosto se inauguró en el ex Hogar Infantil Jorge Coll, con diplomaturas de universidades nacionales de la región.","L":"p","conf":"alta","src":["https://gba.gob.ar/gobierno/noticias/bianco_y_gesualdi_inauguraron_el_centro_universitario_de_san_andr%C3%A9s_de_giles"],"v":"+"},{"y":2025,"t":"Viviendas del Programa Bonaerense","d":"En diciembre se entregaron 12 de las 34 viviendas del plan en la zona oeste de la ciudad.","L":"p","conf":"alta","src":["https://gba.gob.ar/habitat/noticias/la_provincia_sigue_concretando_sue%C3%B1os_12_casas_nuevas_en_san_andr%C3%A9s_de_giles"],"v":"+"},{"y":2026,"t":"Se vuelve a crear el Consejo de Ordenamiento Territorial","d":"La Ordenanza 2811/2026 recrea el Consejo Municipal para el Desarrollo y el Ordenamiento Territorial.","L":"p","conf":"media","src":["https://hcdsanandresdegiles.com.ar/?s=ordenamiento"],"v":"+"},{"y":2026,"t":"Anuncian una nueva estación transformadora","d":"La Provincia anunció una estación de 132 kV que triplicaría la potencia eléctrica disponible; las obras empezarían en 2027.","L":"p","conf":"media","src":["https://www.seccionnorte.com.ar/san-andres-de-giles-triplicara-su-capacidad-energetica-anuncian-construccion-de-nueva-estacion-transformadora/"],"v":"+"}],"censos":[{"anio":1836,"total":1101,"nota":"Padrón provincial"},{"anio":1869,"total":3820},{"anio":1881,"total":5539,"nota":"Censo provincial"},{"anio":1895,"total":9211},{"anio":1914,"total":11712},{"anio":1947,"total":14270},{"anio":1960,"total":14837},{"anio":1970,"total":15433},{"anio":1980,"total":16353},{"anio":1991,"total":18302},{"anio":2001,"total":20829,"urbana":13941,"rural":6888},{"anio":2010,"total":23027,"urbana":16243,"rural":6784},{"anio":2022,"total":26510,"urbana":20302,"rural":6208}],"acerca":["Línea histórica de San Andrés de Giles, iniciada en 2013 por el arquitecto Juan Patricio Addesso y ampliada en 2026. Cada hecho es un círculo que contiene a los anteriores: avanzar en el tiempo agranda el círculo; volver, lo achica.","Los colores siguen las convenciones de los planos de mensura: carmín para lo edificado (el pueblo), verde para el campo, azul para el contexto provincial y nacional. Las pérdidas (epidemias, cierres, inundaciones) van en amarillo y con trazo cortado, como lo que se demuele en un plano.","Las imágenes de Giles se muestran como copias heliográficas; las de la historia nacional, como fotografía de prensa. Cada epígrafe aclara si la imagen muestra el lugar hoy, es un documento de época de otro sitio o es un plano.","Cuando una fuente contradice un dato de la línea de 2013, el dato se conserva y la ficha muestra la revisión. Fuentes principales: la «Síntesis histórica» de Héctor F. Felice publicada por la Municipalidad, el libro del Hospital Municipal, los registros de cementerios, el buscador de ordenanzas del Concejo Deliberante, el Boletín Oficial municipal, normas.gba.gob.ar, el INDEC y la prensa local y regional. Imágenes: Wikimedia Commons (dominio público y licencias Creative Commons, con autor y licencia en cada epígrafe) y, del archivo de J. P. Addesso, el plano del partido de hacia 1890 y la fotografía de época de la plaza San Martín."],"pais":[{"y":1806,"t":"Invasiones inglesas","d":"Tropas británicas ocupan Buenos Aires en junio y son expulsadas en agosto; en 1807 un segundo ataque también es rechazado. Ese mismo año se celebra la primera misa en la Cañada de Giles.","img":"N01","cap":"Reconquista de Buenos Aires, grabado de 1807.","src":"https://es.wikipedia.org/wiki/Invasiones_inglesas"},{"y":1810,"t":"Revolución de Mayo","d":"El cabildo abierto del 22 de mayo destituye al virrey y el 25 asume la Primera Junta de gobierno.","img":"N02","cap":"El cabildo abierto del 22 de mayo, pintura de Pedro Subercaseaux, 1910.","src":"https://es.wikipedia.org/wiki/Revoluci%C3%B3n_de_Mayo"},{"y":1816,"t":"Declaración de la Independencia","d":"El Congreso reunido en San Miguel de Tucumán declara la independencia el 9 de julio.","img":"N03","cap":"Casa Histórica de la Independencia, Tucumán. Foto de 2012.","src":"https://es.wikipedia.org/wiki/Declaraci%C3%B3n_de_independencia_de_la_Argentina"},{"y":1829,"t":"Rosas gobierna Buenos Aires","d":"Juan Manuel de Rosas asume como gobernador; gobernará la provincia entre 1829 y 1832 y entre 1835 y 1852.","img":"N04","cap":"Retrato de Rosas por Raymond Monvoisin, 1842.","src":"https://es.wikipedia.org/wiki/Juan_Manuel_de_Rosas"},{"y":1852,"t":"Batalla de Caseros","d":"El Ejército Grande de Urquiza derrota a Rosas el 3 de febrero y termina su gobierno.","img":"N05","cap":"La batalla de Caseros, litografía de 1852.","src":"https://es.wikipedia.org/wiki/Batalla_de_Caseros"},{"y":1853,"t":"Constitución Nacional","d":"El Congreso Constituyente reunido en Santa Fe sanciona la Constitución el 1 de mayo. Buenos Aires se incorpora en 1860.","img":"N06","cap":"Primera página del manuscrito original de la Constitución.","src":"https://es.wikipedia.org/wiki/Constituci%C3%B3n_de_la_Naci%C3%B3n_Argentina"},{"y":1865,"t":"Guerra del Paraguay","d":"Argentina, Brasil y Uruguay combaten contra Paraguay hasta 1870. La batalla de Tuyutí, de 1866, dará nombre a una estación del partido.","img":"N07","cap":"Batalla de Tuyutí, de Cándido López, 1866.","src":"https://es.wikipedia.org/wiki/Guerra_de_la_Triple_Alianza"},{"y":1869,"t":"Primer censo nacional","d":"Bajo la presidencia de Sarmiento se cuentan 1.877.490 habitantes en todo el país.","img":"N08","cap":"Domingo F. Sarmiento, retrato de hacia 1884.","src":"https://es.wikipedia.org/wiki/Censo_argentino_de_1869"},{"y":1871,"t":"Fiebre amarilla en Buenos Aires","d":"La epidemia mata a más de trece mil personas en la ciudad y empuja obras de agua corriente y cloacas.","img":"N09","cap":"Un episodio de la fiebre amarilla en Buenos Aires, de Juan Manuel Blanes, 1871.","src":"https://es.wikipedia.org/wiki/Epidemia_de_fiebre_amarilla_de_Buenos_Aires"},{"y":1879,"t":"Campaña al Desierto","d":"El Ejército ocupa los territorios indígenas de la pampa y la Patagonia; miles de indígenas mueren, son desplazados o tomados prisioneros, y las tierras pasan a manos privadas.","img":"N10","cap":"La conquista del desierto, de Juan Manuel Blanes, 1889 (fragmento).","src":"https://es.wikipedia.org/wiki/Conquista_del_Desierto"},{"y":1880,"t":"Federalización de Buenos Aires","d":"Tras un enfrentamiento armado, la ciudad de Buenos Aires pasa a ser Capital Federal; Julio A. Roca asume la presidencia. La provincia funda La Plata en 1882.","img":"N11","cap":"Julio Argentino Roca.","src":"https://es.wikipedia.org/wiki/Federalizaci%C3%B3n_de_Buenos_Aires"},{"y":1885,"t":"La red ferroviaria se expande","d":"Entre 1880 y 1914 las vías pasan de unos 2.500 a más de 30.000 kilómetros, con la llanura pampeana como centro.","img":"N30","cap":"La estación Retiro del Ferrocarril Central Argentino, fines del siglo XIX.","src":"https://es.wikipedia.org/wiki/Historia_del_ferrocarril_en_Argentina"},{"y":1890,"t":"Revolución del Parque","d":"Un levantamiento cívico-militar en Buenos Aires, en plena crisis económica, provoca la renuncia del presidente Juárez Celman.","img":"N13","cap":"Escena de la Revolución del Parque, dibujo de 1890.","src":"https://es.wikipedia.org/wiki/Revoluci%C3%B3n_del_Parque"},{"y":1895,"t":"Inmigración masiva","d":"El segundo censo nacional registra 3.954.911 habitantes; uno de cada cuatro nació en el extranjero, sobre todo en Italia y España.","img":"N12","cap":"Inmigrantes polacos en el antiguo Hotel de Inmigrantes, hacia 1890. Archivo General de la Nación.","src":"https://es.wikipedia.org/wiki/Inmigraci%C3%B3n_en_Argentina"},{"y":1898,"t":"Nace Caras y Caretas","d":"La revista ilustrada combina caricatura, fotografía y actualidad, y se vuelve el gran semanario popular de la época.","img":"N14","cap":"Tapa de Caras y Caretas, octubre de 1898.","src":"https://es.wikipedia.org/wiki/Caras_y_Caretas_(Argentina)"},{"y":1910,"t":"Centenario de la Revolución","d":"Buenos Aires celebra el Centenario con exposiciones internacionales, iluminación de la Avenida de Mayo y estado de sitio.","img":"N15","cap":"La Avenida de Mayo iluminada para el Centenario, mayo de 1910.","src":"https://es.wikipedia.org/wiki/Centenario_de_Argentina"},{"y":1912,"t":"Ley Sáenz Peña","d":"Se establece el voto secreto y obligatorio para los varones ciudadanos.","img":"N16","cap":"Tapa de Caras y Caretas sobre las elecciones, 30 de marzo de 1912.","src":"https://es.wikipedia.org/wiki/Ley_S%C3%A1enz_Pe%C3%B1a"},{"y":1916,"t":"Yrigoyen presidente","d":"Hipólito Yrigoyen es el primer presidente elegido con la nueva ley electoral.","img":"N17","cap":"Yrigoyen en el coche presidencial por la Avenida de Mayo, 12 de octubre de 1916.","src":"https://es.wikipedia.org/wiki/Hip%C3%B3lito_Yrigoyen"},{"y":1918,"t":"Reforma Universitaria","d":"Los estudiantes de Córdoba reclaman autonomía, cogobierno y libertad de cátedra; el movimiento se extiende por América Latina.","img":"N18","cap":"Estudiantes en Córdoba, 15 de agosto de 1918.","src":"https://es.wikipedia.org/wiki/Reforma_universitaria_de_1918"},{"y":1930,"t":"Primer golpe de Estado","d":"El 6 de septiembre el general José Félix Uriburu derroca a Yrigoyen. Comienza la llamada Década Infame.","img":null,"cap":"","src":"https://es.wikipedia.org/wiki/Golpe_de_Estado_en_Argentina_de_1930"},{"y":1945,"t":"17 de octubre","d":"Una multitud de trabajadores llena la Plaza de Mayo y reclama la liberación de Juan D. Perón.","img":"N19","cap":"Plaza de Mayo, 17 de octubre de 1945. Archivo General de la Nación.","src":"https://es.wikipedia.org/wiki/D%C3%ADa_de_la_Lealtad"},{"y":1947,"t":"Voto femenino","d":"La Ley 13.010 reconoce el derecho de las mujeres a votar; lo ejercen por primera vez en 1951.","img":"N20","cap":"Eva Perón recibe la Ley 13.010 en el balcón de la Casa Rosada, 1947.","src":"https://es.wikipedia.org/wiki/Sufragio_femenino_en_Argentina"},{"y":1948,"t":"Nacionalización de los ferrocarriles","d":"El Estado compra las compañías británicas y francesas. El Central de Buenos Aires, heredero del Tranway Rural, pasa al Ferrocarril Urquiza en 1949.","img":"N21","cap":"Locomotora presentada con la nacionalización, 1948. Archivo General de la Nación.","src":"https://es.wikipedia.org/wiki/Nacionalizaci%C3%B3n_de_los_ferrocarriles_argentinos"},{"y":1955,"t":"Bombardeo y golpe de 1955","d":"El 16 de junio aviones navales bombardean la Plaza de Mayo; en septiembre un golpe militar derroca a Perón.","img":"N22","cap":"Granaderos durante el bombardeo de la Plaza de Mayo, 16 de junio de 1955.","src":"https://es.wikipedia.org/wiki/Bombardeo_de_la_Plaza_de_Mayo"},{"y":1969,"t":"Cordobazo","d":"Obreros y estudiantes protagonizan una insurrección en Córdoba contra la dictadura de Onganía.","img":"N23","cap":"Córdoba, barrio Alberdi, 30 de mayo de 1969.","src":"https://es.wikipedia.org/wiki/Cordobazo"},{"y":1973,"t":"Cámpora presidente","d":"Héctor J. Cámpora, vecino de San Andrés de Giles, asume la presidencia el 25 de mayo y renuncia en julio para permitir el regreso de Perón.","img":"N24","cap":"El Congreso durante la asunción de Cámpora, 25 de mayo de 1973.","src":"https://es.wikipedia.org/wiki/H%C3%A9ctor_Jos%C3%A9_C%C3%A1mpora"},{"y":1976,"t":"Golpe de Estado","d":"El 24 de marzo una junta militar toma el poder e inicia la dictadura más sangrienta de la historia argentina.","img":"N25","cap":"Jura de Jorge Rafael Videla, 29 de marzo de 1976.","src":"https://es.wikipedia.org/wiki/Golpe_de_Estado_en_Argentina_de_1976"},{"y":1977,"t":"Madres de Plaza de Mayo","d":"El 30 de abril un grupo de madres de desaparecidos empieza a reunirse en la Plaza de Mayo para reclamar por sus hijos.","img":"N26","cap":"Segunda Marcha de la Resistencia, diciembre de 1982.","src":"https://es.wikipedia.org/wiki/Madres_de_Plaza_de_Mayo"},{"y":1982,"t":"Guerra de Malvinas","d":"Entre abril y junio Argentina y el Reino Unido combaten por las islas; mueren 649 militares argentinos.","img":"N27","cap":"Soldados argentinos en Malvinas, 1982.","src":"https://es.wikipedia.org/wiki/Guerra_de_las_Malvinas"},{"y":1983,"t":"Vuelve la democracia","d":"Raúl Alfonsín asume la presidencia el 10 de diciembre. En 1985 se juzga a las juntas militares.","img":"N28","cap":"Asunción de Raúl Alfonsín, 10 de diciembre de 1983.","src":"https://es.wikipedia.org/wiki/Ra%C3%BAl_Alfons%C3%ADn"},{"y":1994,"t":"Reforma constitucional","d":"La Convención reunida en Santa Fe y Paraná reforma la Constitución: incorpora tratados de derechos humanos, la protección del ambiente y la elección directa del presidente.","img":null,"cap":"","src":"https://es.wikipedia.org/wiki/Reforma_constitucional_argentina_de_1994"},{"y":2001,"t":"Crisis de diciembre","d":"El corralito, la protesta social y la represión del 19 y 20 de diciembre terminan con la renuncia del presidente De la Rúa.","img":"N29","cap":"Buenos Aires, 20 de diciembre de 2001.","src":"https://es.wikipedia.org/wiki/Crisis_de_diciembre_de_2001_en_Argentina"},{"y":2020,"t":"Pandemia de COVID-19","d":"Desde el 20 de marzo rige el aislamiento social preventivo y obligatorio en todo el país.","img":null,"cap":"","src":"https://es.wikipedia.org/wiki/Pandemia_de_COVID-19_en_Argentina"}],"imagenes":{"L01":{"w":880,"h":727,"credit":"Jose Bermudes","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Plano_de_la_ciudad_de_Buenos_Aires,_en_esa_%C3%A9poca_Buenos_Ayres,_en_1713.jpg","full":false},"L02":{"w":880,"h":666,"credit":"Johann Moritz Rugendas","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Mauricio_rugendas_-_el_malon.jpg","full":false},"L03":{"w":880,"h":554,"credit":"Juan León Pallière","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Pulper%C3%ADa_de_campa%C3%B1a_-_Buenos_Aires,_seg%C3%BAn_Palli%C3%A8re.tif","full":false},"L50":{"w":900,"h":546,"credit":"Aporte de J. P. Addesso","license":"Archivo personal","page":null,"full":true},"L09":{"w":636,"h":880,"credit":"Roberto Fiadone","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Parroquia_San_Andr%C3%A9s_Apostol_San_Andres_de_Giles_03.jpg","full":false},"L06":{"w":880,"h":393,"credit":"Prilidiano Pueyrredón","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Prilidiano_Pueyrredon_-_Un_alto_en_el_campo_-_Google_Art_Project.jpg","full":false},"L10":{"w":880,"h":734,"credit":"Carlos Morel","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Payada_en_una_pulper%C3%ADa_-_Carlos_Morel.jpg","full":false},"L05":{"w":880,"h":634,"credit":"Roberto Fiadone","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Parroquia_San_Andr%C3%A9s_Apostol_San_Andres_de_Giles_01.jpg","full":false},"L13":{"w":305,"h":421,"credit":"Autor desconocido","license":"Licencia Arte Libre","page":"https://commons.wikimedia.org/wiki/File:Partido_de_San_Andr%C3%A9s_de_Giles,_Argentina.png","full":false},"L07":{"w":674,"h":880,"credit":"Fernando García del Molino","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Facundo_Quiroga_por_Garc%C3%ADa_del_Molino.jpg","full":false},"L11":{"w":410,"h":475,"credit":"Manuel Pla y Valor","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Mariano_Jos%C3%A9_de_Escalada.jpg","full":false},"M3":{"w":685,"h":900,"credit":"Silveyra y Duclout; ed. E. Nolte","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Mapa_de_la_provincia_de_Buenos_Aires_-_recopilado_por_los_ingenieros_Silveyra_;_e_Duclout_-_btv1b525085860_(3_of_6).jpg","full":true},"L15":{"w":880,"h":737,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Peones_estancia_baradero_1883.jpg","full":false},"L14":{"w":880,"h":435,"credit":"Prilidiano Pueyrredón","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Recorriendo_la_estancia_-_Prilidiano_Pueyrred%C3%B3n.jpg","full":false},"L16":{"w":880,"h":661,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Archivo_General_de_la_Naci%C3%B3n_Argentina_1890_aprox,_Carretas_descargando_en_la_estaci%C3%B3n_de_tren.jpg","full":false},"L27":{"w":880,"h":637,"credit":"Roberto Fiadone","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:San_Andr%C3%A9s_de_Giles_Correo_Argentino.jpg","full":false},"L17":{"w":880,"h":589,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Coche_608_(Lacroze_-_Tramway_Rural).png","full":false},"L19":{"w":880,"h":659,"credit":"Roberto Fiadone","license":"CC BY-SA 3.0","page":"https://commons.wikimedia.org/wiki/File:Ruiz_Estaci%C3%B3n.jpg","full":false},"P1890":{"w":1100,"h":615,"credit":"Dirección de Geodesia de la Provincia de Buenos Aires; fotografía J. P. Addesso","license":"Archivo personal","page":null,"full":true},"L20":{"w":880,"h":660,"credit":"Mauricio Genta","license":"CC BY-SA 2.0","page":"https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Heavy_(FC_Urquiza)_-_1.jpg","full":false},"L21":{"w":880,"h":657,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Threshing_scene,_Buenos_Aires,_between_1908_and_1919.jpg","full":false},"L22":{"w":640,"h":480,"credit":"josecarrizo","license":"CC BY 3.0","page":"https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Sol%C3%ADs_-_ex_Ferrocarril_Central_Argentino_-_panoramio.jpg","full":false},"L23":{"w":880,"h":495,"credit":"Dongoyo1","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Ferroviaria_Cucullu.jpg","full":false},"L24":{"w":880,"h":634,"credit":"Roberto Fiadone","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Municipalidad_de_San_Andr%C3%A9s_de_Giles.jpg","full":false},"L25":{"w":880,"h":660,"credit":"Gustavo Durante","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Tuyuti_cgba.jpg","full":false},"L26":{"w":636,"h":880,"credit":"Roberto Fiadone","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Plaza_San_Mart%C3%ADn,_Estatua_de_la_Libertad_San_Andr%C3%A9s_de_Giles_01.jpg","full":false},"L28":{"w":880,"h":593,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Archivo_General_de_la_Naci%C3%B3n_Argentina_1912_hotel_de_inmigrantes.jpg","full":false},"L29":{"w":880,"h":439,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Ladrilleros_de_gral_madariaga_1922.jpg","full":false},"L30":{"w":520,"h":689,"credit":"Pinélides Fusco","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:H%C3%A9ctor_J_Campora.jpg","full":false},"L18":{"w":880,"h":565,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Chacarita_Tramway_Rural_(Lacroze_-_Tramway_Rural).png","full":false},"L31":{"w":880,"h":634,"credit":"Roberto Fiadone","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Casa_H%C3%A9ctor_Jos%C3%A9_C%C3%A1mpora_San_Andr%C3%A9s_de_Giles.jpg","full":false},"L32":{"w":880,"h":635,"credit":"Roberto Fiadone","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Azcu%C3%A9naga_01_estaci%C3%B3n.jpg","full":false},"L33":{"w":880,"h":640,"credit":"Walter Nieto","license":"CC BY-SA 3.0","page":"https://commons.wikimedia.org/wiki/File:Vieja_estaci%C3%B3n_-_panoramio.jpg","full":false},"L39":{"w":880,"h":660,"credit":"Walter Nieto","license":"CC BY-SA 3.0","page":"https://commons.wikimedia.org/wiki/File:Monumento_a_Mitre_-_panoramio.jpg","full":false},"L37":{"w":880,"h":528,"credit":"Luis Argerich","license":"CC BY 2.0","page":"https://commons.wikimedia.org/wiki/File:San_Andr%C3%A9s_de_Giles_-_Estaci%C3%B3n.jpg","full":false},"L36":{"w":880,"h":588,"credit":"Luis Argerich","license":"CC BY 2.0","page":"https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Azcu%C3%A9naga_-_San_Andr%C3%A9s_de_Giles.jpg","full":false},"L34":{"w":880,"h":660,"credit":"Mauricio Genta","license":"CC BY-SA 2.0","page":"https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Heavy_(FC_Urquiza)_-_3.jpg","full":false},"L41":{"w":591,"h":394,"credit":"Cazadoroculto","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Villa-Ruiz-Bs-As-Argentina-2023.jpg","full":false},"L35":{"w":880,"h":587,"credit":"Autor desconocido","license":"CC BY 4.0","page":"https://commons.wikimedia.org/wiki/File:Ruta_7_entre_giles_y_heavy_2019.jpg","full":false},"N01":{"w":760,"h":523,"credit":"Madrid Martínez","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Museo_del_Bicentenario_-_%22Ataque_por_los_ingleses_a_Buenos_Aires%22.jpg","full":false},"N02":{"w":760,"h":570,"credit":"Pedro Subercaseaux","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Cabildo_Abierto_-_Pedro_Subercaseaux.jpg","full":false},"N03":{"w":760,"h":570,"credit":"Horacioelrojo","license":"CC BY-SA 3.0","page":"https://commons.wikimedia.org/wiki/File:Casa_tucuman01.jpg","full":false},"N04":{"w":590,"h":760,"credit":"Raymond Monvoisin","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Raymond_Monvoisin_-_Retrato_de_Juan_Manuel_de_Rosas,_1842.jpg","full":false},"N05":{"w":760,"h":555,"credit":"Alejandro Bernheim y otros","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Batalla_de_Caseros_3_Febrero_1852.jpg","full":false},"N06":{"w":522,"h":760,"credit":"Asamblea Constituyente","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Constituci%C3%B3n_Nacional_Argentina_1853_-_p%C3%A1gina_1.jpeg","full":false},"N07":{"w":760,"h":417,"credit":"Luis Candido Lopez","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Tuyuti.jpg","full":false},"N08":{"w":649,"h":760,"credit":"Eugenia Belín Sarmiento; foto Silvina Frydlewsky","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Domingo_Faustino_Sarmiento_(c._1884)_-_Eugenia_Bel%C3%ADn_Sarmiento_-_Flickr_(Ministerio_de_Cultura_de_la_Naci%C3%B3n)_(38431864432).jpg","full":false},"N09":{"w":582,"h":760,"credit":"Juan Manuel Blanes","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Juan_Manuel_Blanes_-_Un_episodio_de_la_fiebre_amarilla_en_Buenos_Aires.png","full":false},"N10":{"w":555,"h":340,"credit":"Juan Manuel Blanes","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:La_conquista_del_desierto.jpg","full":false},"N11":{"w":349,"h":460,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Julio_Argentino_Roca_(foto).jpg","full":false},"N30":{"w":760,"h":531,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Buenos_Aires_-_Retiro_-_Estaci%C3%B3n_Retiro_FCCA_a_fines_del_siglo_XIX.jpg","full":false},"N13":{"w":555,"h":760,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Escena_de_la_Revoluci%C3%B3n_del_Parque..JPG","full":false},"N12":{"w":760,"h":523,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Archivo_General_de_la_Naci%C3%B3n_Argentina_1890_aprox_Buenos_Aires,_inmigrantes_polacos_en_el_antiguo_Hotel_de_Inmigrantes.jpg","full":false},"N14":{"w":471,"h":760,"credit":"Manuel Mayol Rubio","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Caras_y_caretas_3_cover_1898.jpg","full":false},"N15":{"w":614,"h":739,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Avenida_mayo_iluminada_centenario.jpg","full":false},"N16":{"w":508,"h":760,"credit":"José María Cao","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Caras_y_Caretas_-_Elecciones_de_1912.jpg","full":false},"N17":{"w":760,"h":437,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Yrigoyen_en_coche_presidencial_1916.jpg","full":false},"N18":{"w":760,"h":498,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Reforma_Universitaria_-_C%C3%B3rdoba_-_Estudiantes_van_a_derribar_estatua_de_Garc%C3%ADa_-_15AGO1918.jpg","full":false},"N19":{"w":760,"h":475,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Archivo_General_de_la_Naci%C3%B3n_Argentina_1945_Buenos_Aires_Plaza_de_Mayo_el_17_de_octubre,_pies_en_el_agua.jpg","full":false},"N20":{"w":740,"h":495,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Eva_Per%C3%B3n_recibe_en_sus_manos_la_ley_13010_en_el_balc%C3%B3n_de_Casa_Rosada.jpg","full":false},"N21":{"w":758,"h":760,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Archivo_General_de_la_Naci%C3%B3n_Argentina_1948_locomotora_(Nacionalizaci%C3%B3n_de_los_Ferrocarriles).jpg","full":false},"N22":{"w":540,"h":760,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Granaderos_durante_el_bombardeo_de_la_Plaza_de_Mayo.jpg","full":false},"N23":{"w":750,"h":500,"credit":"Guillermotgalindez","license":"CC BY-SA 4.0","page":"https://commons.wikimedia.org/wiki/File:Cordobazo_-_Barrio_Alberdi_-_Av._Colon_857.jpg","full":false},"N24":{"w":750,"h":546,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Congreso_Argentino_durante_la_asunci%C3%B3n_de_C%C3%A1mpora_(1973).jpg","full":false},"N25":{"w":760,"h":528,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Jorge_Rafael_Videla_Oath.PNG","full":false},"N26":{"w":441,"h":283,"credit":"Archivo Hasenberg-Quaretti","license":"CC BY-SA 3.0","page":"https://commons.wikimedia.org/wiki/File:2%C2%AA_Marcha_de_la_Resistencia_9_y_10_diciembre_1982.jpg","full":false},"N27":{"w":560,"h":760,"credit":"Autor desconocido","license":"Dominio público","page":"https://commons.wikimedia.org/wiki/File:Soldados_argentinos_en_Malvinas,_1982.jpg","full":false},"N28":{"w":760,"h":428,"credit":"Víctor Bugge","license":"CC BY 2.0","page":"https://commons.wikimedia.org/wiki/File:Asume_Alfons%C3%ADn_2.jpg","full":false},"N29":{"w":640,"h":440,"credit":"PRFOTOBAIRES from Arte y Fotografía","license":"CC BY 2.5","page":"https://commons.wikimedia.org/wiki/File:Crisis_20_diciembre_2001.jpg","full":false}}}</script>
+<script>
+(() => {
+const RAW = JSON.parse(document.getElementById('data').textContent);
+const ALL = RAW.eventos, CENSOS = RAW.censos || [], PAIS = RAW.pais || [], IMGS = RAW.imagenes || {};
+const K = 1.95;
+const LAYER = {p:'Pueblo', c:'Campo', x:'Contexto'};
+const KIND = {hoy:'Giles, hoy', giles:'Giles, foto de época', epoca:'Imagen de época', plano:'Plano'};
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = id => document.getElementById(id);
+const cv = $('cv'), ctx = cv.getContext('2d'), stage = $('stage');
+let W = 0, H = 0, DPR = 1, layers = {p:true, c:true, x:true}, seq = [], U = [], c = 0, target = 0, dirty = true;
+let playing = false, playTimer = null, paisPin = null;
+
+// mover el pliego del país debajo del rótulo en pantallas medianas
+const mq = matchMedia('(max-width:1179px)');
+function placePais(){
+  const pais = $('pais'), ficha = document.querySelector('.ficha');
+  if (mq.matches){ if (pais.parentElement !== ficha){ ficha.append(pais); pais.classList.remove('col'); ficha.classList.add('side-wrap'); } }
+  else if (pais.parentElement !== $('app')){ $('app').insertBefore(pais, document.querySelector('.bottom')); pais.classList.add('col'); ficha.classList.remove('side-wrap'); }
+}
+placePais(); mq.addEventListener('change', placePais);
+
+const T = {};
+function readTokens(){ const cs = getComputedStyle(document.documentElement); ['--paper','--sheet','--ink','--ink-2','--line','--diazo','--carmin','--verde','--azul','--amarillo','--duo-dark','--duo-light'].forEach(k => T[k] = cs.getPropertyValue(k).trim()); dirty = true; }
+const layerColor = e => e.v === '-' ? T['--amarillo'] : e.L === 'c' ? T['--verde'] : e.L === 'x' ? T['--azul'] : T['--carmin'];
+
+// imágenes
+const CACHE = {};
+function img(id){ let o = CACHE[id]; if (!o){ o = CACHE[id] = {el: new Image(), ok: false}; o.el.onload = () => { o.ok = true; dirty = true; }; o.el.src = 'img/' + id + '.jpg'; } return o; }
+function preload(){ const j = Math.round(target); for (let k = j - 7; k <= j + 3; k++){ const e = ALL[seq[k]]; if (e && e.img) img(e.img.id); } }
+
+function buildSeq(keepYear){
+  seq = ALL.map((e,i)=>i).filter(i => layers[ALL[i].L]);
+  U = seq.map((_, j) => { const a = Math.PI/2 + 0.42*Math.sin(j*0.83) + 0.14*Math.sin(j*0.29); return [Math.cos(a), Math.sin(a)]; });
+  if (keepYear != null){ let best = 0, bd = Infinity; seq.forEach((i, j) => { const d = Math.abs(ALL[i].y - keepYear); if (d < bd){ bd = d; best = j; } }); c = target = best; }
+  dirty = true; drawTimeline(); updateFicha(true); buildIndex();
+}
+function rel(j, i0){
+  let x = 0, y = 0;
+  if (j <= i0){ for (let m = j+1; m <= i0; m++){ const d = Math.pow(K, m-i0) - Math.pow(K, m-1-i0); x += d*U[m][0]; y += d*U[m][1]; } }
+  else { for (let m = i0+1; m <= j; m++){ const d = Math.pow(K, m-i0) - Math.pow(K, m-1-i0); x -= d*U[m][0]; y -= d*U[m][1]; } }
+  return [x, y];
+}
+function resize(){
+  const r = stage.getBoundingClientRect(); DPR = Math.min(2, window.devicePixelRatio || 1);
+  W = Math.max(1, r.width); H = Math.max(1, r.height);
+  cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR); ctx.setTransform(DPR,0,0,DPR,0,0);
+  dirty = true; drawTimeline();
+}
+let geom = [];
+function geometry(){
+  const R = Math.min(W*0.42, H*0.40);
+  const i0 = Math.max(0, Math.min(seq.length-1, Math.floor(c)));
+  let t = c - i0; if (i0 === seq.length-1) t = 0;
+  const a = rel(i0, i0), b = i0+1 < seq.length ? rel(i0+1, i0) : a;
+  const camx = a[0] + (b[0]-a[0])*t, camy = a[1] + (b[1]-a[1])*t;
+  const scale = R * Math.pow(K, -t), cx0 = W/2, cy0 = H/2 + 6;
+  const out = [];
+  for (let j = Math.max(0, i0-8); j <= Math.min(seq.length-1, i0+2); j++){
+    const p = rel(j, i0);
+    out.push({j, x: cx0 + (p[0]-camx)*scale, y: cy0 + (p[1]-camy)*scale, r: Math.pow(K, j-i0) * scale});
+  }
+  return out;
+}
+function wrap(text, maxW, maxLines){
+  const words = String(text).split(/\s+/); const lines = []; let cur = '';
+  for (const w of words){ const test = cur ? cur + ' ' + w : w;
+    if (ctx.measureText(test).width > maxW && cur){ lines.push(cur); cur = w; if (lines.length === maxLines) break; } else cur = test; }
+  if (lines.length < maxLines && cur) lines.push(cur);
+  else if (lines.length === maxLines && cur && lines[lines.length-1] !== cur){ let l = lines[maxLines-1]; while (ctx.measureText(l+'…').width > maxW && l.length) l = l.slice(0,-1); lines[maxLines-1] = l + '…'; }
+  return lines;
+}
+function drawPhoto(g, e){
+  const o = img(e.img.id); if (!o.ok) return false;
+  const im = o.el; const s = Math.max(2*g.r/im.naturalWidth, 2*g.r/im.naturalHeight);
+  const w = im.naturalWidth*s, h = im.naturalHeight*s;
+  const fy = e.img.fy == null ? .5 : e.img.fy;
+  const top = Math.min(g.y - g.r, Math.max(g.y + g.r - h, g.y - h*fy));
+  ctx.save(); ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, Math.PI*2); ctx.clip();
+  ctx.drawImage(im, g.x - w/2, top, w, h);
+  ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = T['--duo-light']; ctx.fillRect(g.x-g.r, g.y-g.r, 2*g.r, 2*g.r);
+  ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = T['--duo-dark']; ctx.fillRect(g.x-g.r, g.y-g.r, 2*g.r, 2*g.r);
+  ctx.restore();
+  return true;
+}
+function tag(x, y, text, col, size){
+  ctx.font = `${size}px "Saira Stencil One", "Saira", sans-serif`;
+  const w = ctx.measureText(text).width + size*0.9, h = size*1.45;
+  ctx.fillStyle = T['--sheet']; ctx.fillRect(x - w/2, y - h/2, w, h);
+  ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.strokeRect(x - w/2 + .5, y - h/2 + .5, w - 1, h - 1);
+  ctx.fillStyle = col; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, x, y + size*0.04);
+}
+function draw(){
+  ctx.clearRect(0,0,W,H); if (!seq.length) return;
+  geom = geometry();
+  const focus = Math.round(c);
+  for (const g of [...geom].sort((a, b) => b.r - a.r)){
+    if (g.r < 2) continue;
+    const e = ALL[seq[g.j]];
+    const vis = g.j > c ? Math.max(0, 1 - (g.j - c)) : 1;
+    ctx.globalAlpha = vis;
+    // disco de papel: tapa lo que queda afuera
+    ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, Math.PI*2); ctx.fillStyle = T['--sheet']; ctx.fill();
+    const hasPhoto = e.img && g.r > 22 && drawPhoto(g, e);
+    ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, Math.PI*2);
+    ctx.strokeStyle = layerColor(e); ctx.lineWidth = g.j === focus ? 2.2 : 1.3;
+    if (e.v === '-') ctx.setLineDash([Math.max(4, g.r*0.03), Math.max(3, g.r*0.02)]);
+    ctx.stroke(); ctx.setLineDash([]);
+    if (!hasPhoto){
+      // el texto va en la media luna libre, del lado opuesto al círculo interior
+      const u = U[g.j], hasInner = g.j > 0 && geom.some(o => o.j === g.j - 1);
+      const lx = hasInner ? g.x - u[0]*g.r*0.5 : g.x, ly = hasInner ? g.y - u[1]*g.r*0.5 : g.y;
+      const ys = g.r*(hasInner ? 0.2 : 0.28);
+      if (ys >= 10){
+        const col = layerColor(e);
+        ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+        const ts = Math.max(9, Math.min(22, g.r*(hasInner ? 0.05 : 0.07))), maxW = g.r*(hasInner ? 1.15 : 1.35);
+        ctx.font = `500 ${ts}px "Saira", sans-serif`;
+        const tl = ts >= 10 ? wrap(e.t, maxW, hasInner ? 2 : 3) : [];
+        const blockH = ys*0.8 + (tl.length ? ts*0.45 + tl.length*ts*1.2 : 0);
+        let yy = ly - blockH/2 + ys*0.8;
+        ctx.fillStyle = col; ctx.font = `${ys}px "Saira Stencil One", "Saira", sans-serif`; ctx.fillText(String(e.y), lx, yy);
+        if (tl.length){ yy += ts*0.45; ctx.fillStyle = T['--ink']; ctx.font = `500 ${ts}px "Saira", sans-serif`; for (const l of tl){ yy += ts*1.2; ctx.fillText(l, lx, yy); } }
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  // rótulos en el borde superior de cada círculo con imagen
+  for (const g of geom){
+    const e = ALL[seq[g.j]]; if (!e.img || g.r < 36) continue;
+    const vis = g.j > c ? Math.max(0, 1 - (g.j - c)) : 1; if (vis < .05) continue;
+    ctx.globalAlpha = vis;
+    const size = Math.max(11, Math.min(26, g.r*0.075));
+    tag(g.x, g.y - g.r, String(e.y), layerColor(e), size);
+    ctx.globalAlpha = 1;
+  }
+}
+let last = performance.now();
+function loop(now){
+  const dt = Math.min(0.05, (now - last)/1000); last = now;
+  if (Math.abs(target - c) > 0.0005){ c = reduce ? target : c + (target - c) * Math.min(1, dt*5); if (Math.abs(target - c) < 0.0005) c = target; dirty = true; }
+  if (dirty){ draw(); dirty = false; }
+  requestAnimationFrame(loop);
+}
+
+// rótulo del hecho
+function host(u){ try { return new URL(u).hostname.replace(/^www\./,''); } catch(_) { return u; } }
+function creditHTML(m){
+  if (!m) return '';
+  const a = document.createElement('span'); a.textContent = m.credit + ' · ' + m.license;
+  if (m.page){ const l = document.createElement('a'); l.href = m.page; l.target = '_blank'; l.rel = 'noopener'; l.textContent = 'Wikimedia Commons'; return [a, document.createTextNode(' · '), l]; }
+  return [a];
+}
+let shownIdx = -1;
+function currentEvent(){ return ALL[seq[Math.max(0, Math.min(seq.length-1, Math.round(target)))]]; }
+function updateFicha(force){
+  const j = Math.max(0, Math.min(seq.length-1, Math.round(target)));
+  if (!force && seq[j] === shownIdx) return; shownIdx = seq[j];
+  const e = ALL[seq[j]], neg = e.v === '-';
+  const lay = $('f-layer'); lay.className = 'k lay ' + e.L + (neg ? ' neg' : ''); lay.querySelector('span').textContent = LAYER[e.L] + (neg ? ' · pérdida' : '');
+  $('f-kind').textContent = e.conf && e.conf !== 'alta' ? 'Confianza ' + e.conf : '';
+  const fy = $('f-year'); fy.textContent = e.y; fy.className = 'f-year ' + (neg ? 'neg' : e.L);
+  $('f-title').textContent = e.t;
+  $('f-note').textContent = e.n || ''; $('f-note').hidden = !e.n;
+  $('f-detail').textContent = e.d || ''; $('f-detail').hidden = !e.d;
+  const fx = $('f-fix');
+  if (e.fix){ fx.innerHTML = ''; const b = document.createElement('b'); b.textContent = 'Revisión del dato'; fx.append(b, document.createTextNode(e.fix)); fx.hidden = false; } else fx.hidden = true;
+  const fi = $('f-img');
+  if (e.img){
+    const m = IMGS[e.img.id];
+    $('f-thumb').style.backgroundImage = `url("img/${e.img.id}.jpg")`;
+    $('f-cap').textContent = e.img.cap;
+    const cr = $('f-credit'); cr.innerHTML = ''; cr.append(KIND[e.img.kind] + ' · ', ...creditHTML(m));
+    fi.hidden = false;
+  } else fi.hidden = true;
+  $('r-lam').textContent = `${j+1} / ${seq.length}`;
+  $('r-kind').textContent = e.img ? KIND[e.img.kind] : 'Sin imagen';
+  const s = $('r-src'); s.innerHTML = '';
+  for (const u of (e.src || [])){ const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = host(u); s.append(a); }
+  $('r-src-wrap').hidden = !(e.src && e.src.length);
+  $('c-dir').textContent = (j > 0 ? ALL[seq[j-1]].y : '—') + ' · ' + (j < seq.length-1 ? ALL[seq[j+1]].y : '—');
+  paisPin = null; updatePais(); markTimeline(); preload();
+}
+
+// pliego del país
+function paisIndexFor(year){ let k = -1; PAIS.forEach((p, i) => { if (p.y <= year) k = i; }); return k; }
+function updatePais(){
+  const e = currentEvent(); if (!e) return;
+  let k = paisPin != null ? paisPin : paisIndexFor(e.y);
+  const before = k < 0; if (before) k = 0;
+  const p = PAIS[k];
+  $('p-span').textContent = `${PAIS.length} hechos`;
+  $('p-rel').textContent = paisPin != null ? 'Seleccionado' : before ? `Antes de ${p.y}: aún no hay hechos nacionales en esta lista` : (p.y === e.y ? `El mismo año que el hecho de Giles` : `Hecho nacional anterior más cercano a ${e.y}`);
+  $('p-year').textContent = p.y; $('p-title').textContent = p.t; $('p-detail').textContent = p.d;
+  const pr = $('p-press'), pi = $('p-img');
+  pr.hidden = !p.img;
+  if (p.img){ pi.src = `img/${p.img}.jpg`; pi.alt = p.cap; }
+  const cr = $('p-credit'); cr.innerHTML = '';
+  if (p.img){ cr.append(p.cap + ' ', ...creditHTML(IMGS[p.img])); }
+  const sl = document.createElement('a'); sl.href = p.src; sl.target = '_blank'; sl.rel = 'noopener'; sl.textContent = 'Más en Wikipedia';
+  cr.append(document.createElement('br'), sl);
+  const list = $('p-list'); list.innerHTML = '';
+  for (let i = Math.max(0, k-2); i <= Math.min(PAIS.length-1, k+3); i++){
+    const q = PAIS[i]; const li = document.createElement('li'); const b = document.createElement('button');
+    if (i === k) b.className = 'cur';
+    b.innerHTML = `<span class="y">${q.y}</span><span class="tn"></span><span class="t"></span>`;
+    if (q.img) b.querySelector('.tn').style.backgroundImage = `url("img/${q.img}.jpg")`; else b.querySelector('.tn').style.visibility = 'hidden';
+    b.querySelector('.t').textContent = q.t;
+    b.addEventListener('click', () => { paisPin = i; updatePais(); markTimeline(); });
+    li.append(b); list.append(li);
+  }
+}
+
+function go(j){ target = Math.max(0, Math.min(seq.length-1, j)); dirty = true; updateFicha(); }
+function step(d){ go(Math.round(target) + d); }
+
+// escala de los años
+const SVGNS = 'http://www.w3.org/2000/svg';
+let tlX = null, tlW = 0, tlBase = 0;
+function el(n, a, p){ const e = document.createElementNS(SVGNS, n); for (const k in a) e.setAttribute(k, a[k]); if (p) p.append(e); return e; }
+function drawTimeline(){
+  const svg = $('tl'); const r = svg.getBoundingClientRect();
+  tlW = Math.max(200, r.width); const h = r.height || 104;
+  svg.setAttribute('viewBox', `0 0 ${tlW} ${h}`); svg.innerHTML = '';
+  if (!seq.length) return;
+  const y0 = Math.min(...seq.map(i => ALL[i].y)), y1 = 2026, BREAK = 1790, pad = 8, lab = 46;
+  const hasEarly = y0 < BREAK, earlyW = hasEarly ? Math.min(80, tlW*0.1) : 0;
+  const mainStart = pad + lab + earlyW + (hasEarly ? 10 : 0), mainEnd = tlW - pad;
+  tlX = (y) => { if (hasEarly && y < BREAK) return pad + lab + (y - y0)/(BREAK - y0) * earlyW; const s = hasEarly ? BREAK : y0; return mainStart + (y - s)/(y1 - s) * (mainEnd - mainStart); };
+  const base = h - 34; tlBase = base; const popTop = 4, popH = base - 18 - popTop;
+  const cs = CENSOS.filter(d => d.total);
+  if (cs.length > 1){
+    const maxP = Math.max(...cs.map(d => d.total)), py = v => popTop + popH - (v/maxP)*popH;
+    let dA = `M${tlX(cs[0].anio)},${base-16} `; cs.forEach(d => dA += `L${tlX(d.anio)},${py(d.total)} `); dA += `L${tlX(cs[cs.length-1].anio)},${base-16} Z`;
+    el('path', {d: dA, class: 'pop'}, svg);
+    const ur = cs.filter(d => d.urbana != null && d.rural != null);
+    if (ur.length > 1){ el('path', {d: 'M' + ur.map(d => `${tlX(d.anio)},${py(d.urbana)}`).join(' L'), class: 'urb'}, svg); el('path', {d: 'M' + ur.map(d => `${tlX(d.anio)},${py(d.rural)}`).join(' L'), class: 'rur'}, svg); }
+    cs.forEach(d => { const dot = el('circle', {cx: tlX(d.anio), cy: py(d.total), r: 2.4, class: 'pt'}, svg); el('title', {}, dot).textContent = `${d.nota || 'Censo nacional'} ${d.anio}: ${d.total.toLocaleString('es-AR')} hab.` + (d.urbana != null ? ` · ciudad ${d.urbana.toLocaleString('es-AR')} · resto ${d.rural.toLocaleString('es-AR')}` : ''); });
+  }
+  el('text', {x: pad, y: base - 4, class: 'row'}, svg).textContent = 'GILES';
+  el('text', {x: pad, y: base + 13, class: 'row'}, svg).textContent = 'PAÍS';
+  el('line', {x1: pad + lab, x2: tlW - pad, y1: base, y2: base, class: 'ax'}, svg);
+  if (hasEarly){ el('path', {d: `M${pad+lab+earlyW+2},${base+4} l4,-8 M${pad+lab+earlyW+7},${base+4} l4,-8`, stroke: 'currentColor', class: 'ax'}, svg); el('text', {x: pad + lab, y: h - 3}, svg).textContent = String(y0); }
+  const stepY = tlW < 560 ? 50 : 25;
+  for (let y = Math.ceil((hasEarly ? BREAK : y0)/stepY)*stepY; y <= 2025; y += stepY){
+    const x = tlX(y); el('line', {x1: x, x2: x, y1: base + 18, y2: base + 21, class: 'ax'}, svg);
+    if (y % (stepY*2) === 0 || stepY === 50) el('text', {x, y: h - 3, 'text-anchor': 'middle'}, svg).textContent = y;
+  }
+  seq.forEach((i, j) => { const e = ALL[i], x = tlX(e.y); el('line', {x1: x, x2: x, y1: base - 10, y2: base, class: 'tick ' + (e.v === '-' ? 'neg' : e.L)}, svg); });
+  PAIS.forEach(p => { const x = tlX(p.y); el('line', {x1: x, x2: x, y1: base + 2, y2: base + 12, class: 'ntick'}, svg); });
+  el('line', {id: 'tl-cur', x1: 0, x2: 0, y1: base - 18, y2: base + 14, class: 'cur'}, svg);
+  el('text', {id: 'tl-curlbl', x: 0, y: base - 21, 'text-anchor': 'middle', class: 'curlbl'}, svg);
+  markTimeline();
+  const lg = $('legend'); lg.innerHTML = '';
+  const f0 = CENSOS.find(d => d.anio === 1869) || CENSOS[0], fl = CENSOS[CENSOS.length-1];
+  for (const [col, txt] of [['var(--diazo)', `Población del partido: ${f0.total.toLocaleString('es-AR')} hab. en ${f0.anio}, ${fl.total.toLocaleString('es-AR')} en ${fl.anio}`], ['var(--carmin)', 'ciudad cabecera'], ['var(--verde)', 'resto del partido: pueblos y campo']]){ const s = document.createElement('span'); s.innerHTML = `<i style="border-color:${col}"></i>`; s.append(txt); lg.append(s); }
+}
+function markTimeline(){
+  if (!tlX || !seq.length) return; const e = currentEvent(); const x = tlX(e.y);
+  const cur = $('tl-cur'), lbl = $('tl-curlbl'); if (!cur) return;
+  cur.setAttribute('x1', x); cur.setAttribute('x2', x); lbl.setAttribute('x', Math.max(70, Math.min(tlW - 18, x))); lbl.textContent = e.y;
+}
+function tlPick(clientX, clientY){
+  const r = $('tl').getBoundingClientRect(); const x = (clientX - r.left) * (tlW / r.width), y = (clientY - r.top) * (r.height ? (parseFloat($('tl').getAttribute('viewBox').split(' ')[3]) / r.height) : 1);
+  if (y > tlBase + 1){ let bi = 0, bd = Infinity; PAIS.forEach((p, i) => { const d = Math.abs(tlX(p.y) - x); if (d < bd){ bd = d; bi = i; } }); paisPin = bi; updatePais(); return; }
+  let best = 0, bd = Infinity; seq.forEach((i, j) => { const d = Math.abs(tlX(ALL[i].y) - x); if (d < bd){ bd = d; best = j; } }); go(best);
+}
+let tlDrag = false;
+$('tl').addEventListener('pointerdown', ev => { tlDrag = true; $('tl').setPointerCapture(ev.pointerId); stopPlay(); tlPick(ev.clientX, ev.clientY); });
+$('tl').addEventListener('pointermove', ev => { if (tlDrag) tlPick(ev.clientX, ev.clientY); });
+$('tl').addEventListener('pointerup', () => tlDrag = false);
+
+// índice
+function buildIndex(){
+  const body = $('ix-body'); body.innerHTML = '';
+  const groups = {};
+  seq.forEach((i, j) => { const e = ALL[i]; const g = e.y < 1800 ? 'Giles · antes de 1800' : `Giles · siglo ${['XIX','XX','XXI'][Math.floor((e.y-1801)/100)]}`; (groups[g] ||= []).push([e, j]); });
+  for (const g in groups){
+    const sec = document.createElement('section'); sec.className = 'cent';
+    const h = document.createElement('h3'); h.className = 'k'; h.textContent = g; sec.append(h);
+    const ol = document.createElement('ol');
+    for (const [e, j] of groups[g]){
+      const li = document.createElement('li'), b = document.createElement('button');
+      b.innerHTML = `<span class="y ${e.v === '-' ? 'neg' : e.L}">${e.y}</span><span class="t"></span>`;
+      b.querySelector('.t').textContent = e.t;
+      if (e.img){ const s = document.createElement('span'); s.className = 'ph'; s.textContent = 'imagen'; b.querySelector('.t').append(s); }
+      b.addEventListener('click', () => { closeOv('index'); go(j); });
+      li.append(b); ol.append(li);
+    }
+    sec.append(ol); body.append(sec);
+  }
+  const sec = document.createElement('section'); sec.className = 'cent';
+  const h = document.createElement('h3'); h.className = 'k'; h.textContent = 'En el país'; sec.append(h);
+  const ol = document.createElement('ol');
+  PAIS.forEach((p, i) => { const li = document.createElement('li'), b = document.createElement('button');
+    b.innerHTML = `<span class="y n">${p.y}</span><span class="t"></span>`; b.querySelector('.t').textContent = p.t;
+    b.addEventListener('click', () => { closeOv('index'); let bj = 0, bd = Infinity; seq.forEach((k, j) => { const d = Math.abs(ALL[k].y - p.y); if (d < bd){ bd = d; bj = j; } }); go(bj); paisPin = i; updatePais(); });
+    li.append(b); ol.append(li); });
+  sec.append(ol); body.append(sec);
+  const ab = $('about'); ab.innerHTML = ''; (RAW.acerca || []).forEach(t => { const p = document.createElement('p'); p.textContent = t; ab.append(p); });
+}
+let lastFocus = null;
+function openOv(id, focusId){ stopPlay(); lastFocus = document.activeElement; $(id).hidden = false; $(focusId).focus(); }
+function closeOv(id){ $(id).hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+$('btn-index').addEventListener('click', () => openOv('index', 'ix-close'));
+$('ix-close').addEventListener('click', () => closeOv('index'));
+$('lb-close').addEventListener('click', () => closeOv('lb'));
+function lightbox(id, cap, title){
+  const m = IMGS[id]; $('lb-img').src = `img/${id}${m && m.full ? '_full' : ''}.jpg`; $('lb-img').alt = cap;
+  $('lb-title').textContent = title; $('lb-cap').textContent = cap;
+  const cr = $('lb-credit'); cr.innerHTML = ''; cr.append(...creditHTML(m));
+  openOv('lb', 'lb-close');
+}
+$('f-thumb').addEventListener('click', () => { const e = currentEvent(); if (e.img) lightbox(e.img.id, e.img.cap, String(e.y)); });
+$('p-press').addEventListener('click', () => { const e = currentEvent(); let k = paisPin != null ? paisPin : Math.max(0, paisIndexFor(e.y)); const p = PAIS[k]; if (p.img) lightbox(p.img, p.cap, `${p.y} · ${p.t}`); });
+
+// capas
+function syncLayerButtons(){ document.querySelectorAll('.layer').forEach(b => b.setAttribute('aria-pressed', String(layers[b.dataset.l]))); }
+document.querySelectorAll('.layer').forEach(b => b.addEventListener('click', () => {
+  const l = b.dataset.l; if (layers[l] && Object.values(layers).filter(Boolean).length === 1) return;
+  const y = seq.length ? currentEvent().y : null; layers[l] = !layers[l]; syncLayerButtons(); buildSeq(y);
+}));
+
+// recorrido
+function stopPlay(){ playing = false; clearInterval(playTimer); $('play').setAttribute('aria-pressed','false'); $('play').textContent = 'Recorrer'; }
+function startPlay(){ playing = true; $('play').setAttribute('aria-pressed','true'); $('play').textContent = 'Pausa'; if (Math.round(target) >= seq.length-1) go(0);
+  playTimer = setInterval(() => { if (Math.round(target) >= seq.length-1) stopPlay(); else step(1); }, 3600); }
+$('play').addEventListener('click', () => playing ? stopPlay() : startPlay());
+$('prev').addEventListener('click', () => { stopPlay(); step(-1); });
+$('next').addEventListener('click', () => { stopPlay(); step(1); });
+addEventListener('keydown', ev => {
+  if (!$('lb').hidden){ if (ev.key === 'Escape') closeOv('lb'); return; }
+  if (!$('index').hidden){ if (ev.key === 'Escape') closeOv('index'); return; }
+  if (ev.target.closest && ev.target.closest('button,a') && (ev.key === ' ' || ev.key === 'Enter')) return;
+  const k = ev.key;
+  if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown'){ ev.preventDefault(); stopPlay(); step(1); }
+  else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp'){ ev.preventDefault(); stopPlay(); step(-1); }
+  else if (k === 'Home'){ stopPlay(); go(0); } else if (k === 'End'){ stopPlay(); go(seq.length-1); }
+});
+let snapT = null;
+stage.addEventListener('wheel', ev => { ev.preventDefault(); stopPlay();
+  const d = ev.deltaMode === 1 ? ev.deltaY*16 : ev.deltaY;
+  target = Math.max(0, Math.min(seq.length-1, target + d*0.003)); dirty = true; clearTimeout(snapT);
+  snapT = setTimeout(() => go(Math.round(target)), 180); updateFicha(); }, {passive:false});
+let drag = null;
+stage.addEventListener('pointerdown', ev => { drag = {x: ev.clientX, y: ev.clientY, t0: target, moved: false}; cv.style.cursor = 'grabbing'; });
+addEventListener('pointermove', ev => {
+  if (!drag){ hover(ev); return; }
+  const dy = ev.clientY - drag.y, dx = ev.clientX - drag.x, d = Math.abs(dy) > Math.abs(dx) ? -dy : -dx;
+  if (Math.abs(d) > 6) drag.moved = true;
+  if (drag.moved){ stopPlay(); target = Math.max(0, Math.min(seq.length-1, drag.t0 + d/120)); dirty = true; updateFicha(); }
+});
+addEventListener('pointerup', ev => {
+  if (!drag) return; const moved = drag.moved; drag = null; cv.style.cursor = 'grab';
+  if (moved){ go(Math.round(target)); return; }
+  const r = stage.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  if (x < 0 || y < 0 || x > r.width || y > r.height) return;
+  const hit = pick(x, y); if (hit != null && hit !== Math.round(target)){ stopPlay(); go(hit); }
+});
+function pick(x, y){ let best = null; for (const g of geom){ if (g.r < 14) continue; if (Math.hypot(x - g.x, y - g.y) <= g.r && (best === null || g.r < best.r)) best = g; } return best ? best.j : Math.min(seq.length-1, Math.round(target) + 1); }
+function hover(ev){ const r = stage.getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top; if (x < 0 || y < 0 || x > r.width || y > r.height) return; const h = pick(x, y); cv.style.cursor = (h != null && h !== Math.round(target)) ? 'pointer' : 'grab'; }
+
+readTokens();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readTokens);
+new MutationObserver(readTokens).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+new ResizeObserver(resize).observe(stage);
+addEventListener('resize', () => drawTimeline());
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => dirty = true);
+buildSeq(null);
+{ const f = seq.findIndex(i => ALL[i].y === 1806 && ALL[i].img); if (f >= 0){ c = target = f; updateFicha(true); } }
+resize();
+requestAnimationFrame(loop);
+})();
+</script>
+
+</body>
+</html>
