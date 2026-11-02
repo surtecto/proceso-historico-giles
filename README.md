@@ -3,7 +3,7 @@
 Línea histórica del Partido de San Andrés de Giles (Provincia de Buenos Aires), de 1699 a hoy.
 Cada hecho es un círculo que contiene a los anteriores: avanzar en el tiempo agranda el círculo; volver, lo achica.
 
-- 173 hechos en tres capas: Pueblo, Campo y Contexto. Las pérdidas van en trazo cortado.
+- 170 hechos en tres capas: Pueblo, Campo y Contexto. Las pérdidas van en trazo cortado.
 - 33 hechos de la historia nacional, sincronizados con el año que se recorre.
 - Población del partido según el padrón de 1836 y los censos nacionales.
 - Gobierno local de cada año (juez de paz, intendente o comisionado) según la «Historia de nuestras autoridades» del Digesto Gilense: https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
