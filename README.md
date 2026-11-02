@@ -6,6 +6,7 @@ Cada hecho es un círculo que contiene a los anteriores: avanzar en el tiempo ag
 - 173 hechos en tres capas: Pueblo, Campo y Contexto. Las pérdidas van en trazo cortado.
 - 33 hechos de la historia nacional, sincronizados con el año que se recorre.
 - Población del partido según el padrón de 1836 y los censos nacionales.
+- Gobierno local de cada año (juez de paz, intendente o comisionado) según la «Historia de nuestras autoridades» del Digesto Gilense: https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
 - Línea iniciada en 2013 por el arquitecto Juan Patricio Addesso y ampliada en 2026.
 
 Sitio estático: `index.html` y la carpeta `img/`. No necesita servidor ni compilación.
@@ -20,8 +21,20 @@ ordenanzas del Honorable Concejo Deliberante, Boletín Oficial municipal, normas
 
 Las imágenes de Wikimedia Commons conservan su licencia (dominio público o Creative Commons) y su autor, que se
 muestran en cada epígrafe. El plano del partido de hacia 1890 y la fotografía de época de la plaza San Martín son del
-archivo de J. P. Addesso.
+archivo de J. P. Addesso. Las fotografías históricas del Digesto Gilense (archivo municipal) se usan con enlace a su fuente.
 
+- `img/D_antes_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_antes_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_despacho_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_despacho_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_larga_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_larga_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_notables_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_notables_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_secreto_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_secreto_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_treinta_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/D_treinta_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
 - `img/L01.jpg` · Jose Bermudes · Dominio público · https://commons.wikimedia.org/wiki/File:Plano_de_la_ciudad_de_Buenos_Aires,_en_esa_%C3%A9poca_Buenos_Ayres,_en_1713.jpg
 - `img/L02.jpg` · Johann Moritz Rugendas · Dominio público · https://commons.wikimedia.org/wiki/File:Mauricio_rugendas_-_el_malon.jpg
 - `img/L03.jpg` · Juan León Pallière · Dominio público · https://commons.wikimedia.org/wiki/File:Pulper%C3%ADa_de_campa%C3%B1a_-_Buenos_Aires,_seg%C3%BAn_Palli%C3%A8re.tif
@@ -44,7 +57,6 @@ archivo de J. P. Addesso.
 - `img/L23.jpg` · Dongoyo1 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Ferroviaria_Cucullu.jpg
 - `img/L24.jpg` · Roberto Fiadone · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Municipalidad_de_San_Andr%C3%A9s_de_Giles.jpg
 - `img/L25.jpg` · Gustavo Durante · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Tuyuti_cgba.jpg
-- `img/L26.jpg` · Roberto Fiadone · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Plaza_San_Mart%C3%ADn,_Estatua_de_la_Libertad_San_Andr%C3%A9s_de_Giles_01.jpg
 - `img/L27.jpg` · Roberto Fiadone · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:San_Andr%C3%A9s_de_Giles_Correo_Argentino.jpg
 - `img/L28.jpg` · Autor desconocido · Dominio público · https://commons.wikimedia.org/wiki/File:Archivo_General_de_la_Naci%C3%B3n_Argentina_1912_hotel_de_inmigrantes.jpg
 - `img/L29.jpg` · Autor desconocido · Dominio público · https://commons.wikimedia.org/wiki/File:Ladrilleros_de_gral_madariaga_1922.jpg
