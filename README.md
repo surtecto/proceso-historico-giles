@@ -63,7 +63,25 @@ Cada una lleva el sello «Recreación · IA · 2026» en la imagen y la aclaraci
 - `img/F1865.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
 - `img/F1867.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
 - `img/F1868.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1871.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
 - `img/F1872.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1873.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1875.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1876.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1938a.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1938b.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1991a.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1991b.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1992a.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1992b.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2021a.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2021b.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2021c.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2021d.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2021e.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2022a.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2022b.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F2022c.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
 - `img/L01.jpg` · Jose Bermudes · Dominio público · https://commons.wikimedia.org/wiki/File:Plano_de_la_ciudad_de_Buenos_Aires,_en_esa_%C3%A9poca_Buenos_Ayres,_en_1713.jpg
 - `img/L02.jpg` · Johann Moritz Rugendas · Dominio público · https://commons.wikimedia.org/wiki/File:Mauricio_rugendas_-_el_malon.jpg
 - `img/L03.jpg` · Juan León Pallière · Dominio público · https://commons.wikimedia.org/wiki/File:Pulper%C3%ADa_de_campa%C3%B1a_-_Buenos_Aires,_seg%C3%BAn_Palli%C3%A8re.tif
@@ -132,3 +150,6 @@ Cada una lleva el sello «Recreación · IA · 2026» en la imagen y la aclaraci
 - `img/N29.jpg` · PRFOTOBAIRES from Arte y Fotografía · CC BY 2.5 · https://commons.wikimedia.org/wiki/File:Crisis_20_diciembre_2001.jpg
 - `img/N30.jpg` · Autor desconocido · Dominio público · https://commons.wikimedia.org/wiki/File:Buenos_Aires_-_Retiro_-_Estaci%C3%B3n_Retiro_FCCA_a_fines_del_siglo_XIX.jpg
 - `img/P1890.jpg` · Dirección de Geodesia de la Provincia de Buenos Aires; fotografía J. P. Addesso · Archivo personal · archivo de J. P. Addesso
+- `img/PAT_1.jpg` · Registro del Patrimonio Cultural de San Andrés de Giles · Comisión Municipal Asesora de Patrimonio Cultural · https://surtecto.github.io/WEB-Patrimonio/
+- `img/PAT_83.jpg` · Registro del Patrimonio Cultural de San Andrés de Giles · Comisión Municipal Asesora de Patrimonio Cultural · https://surtecto.github.io/WEB-Patrimonio/
+- `img/PAT_93.jpg` · Registro del Patrimonio Cultural de San Andrés de Giles · Comisión Municipal Asesora de Patrimonio Cultural · https://surtecto.github.io/WEB-Patrimonio/
