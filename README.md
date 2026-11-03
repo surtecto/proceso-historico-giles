@@ -8,6 +8,7 @@ Cada hecho es un círculo que contiene a los anteriores: avanzar en el tiempo ag
 - Población del partido según el padrón de 1836 y los censos nacionales.
 - Gobierno local de cada año (juez de paz, intendente o comisionado) según la «Historia de nuestras autoridades» del Digesto Gilense: https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
 - Línea iniciada en 2013 por el arquitecto Juan Patricio Addesso y ampliada en 2026.
+- En permanente construcción: se siguen sumando hechos, imágenes y correcciones.
 
 Sitio estático: `index.html` y la carpeta `img/`. No necesita servidor ni compilación.
 
@@ -23,6 +24,11 @@ Las imágenes de Wikimedia Commons conservan su licencia (dominio público o Cre
 muestran en cada epígrafe. El plano del partido de hacia 1890 y la fotografía de época de la plaza San Martín son del
 archivo de J. P. Addesso. Las fotografías históricas del Digesto Gilense (archivo municipal) se usan con enlace a su fuente.
 
+Los hechos anteriores a la fotografía que no tienen imagen de época llevan una recreación generada con IA (Figma),
+dibujada en el modo de registro de su tiempo (mapa manuscrito, plano de ingeniero, acuarela de viajero, litografía,
+grabado de prensa) a partir de la investigación de la línea y de la cartografía del Atlas de Mensuras de Giles.
+Cada una lleva el sello «Recreación · IA · 2026» en la imagen y la aclaración en su epígrafe: no son documentos de época.
+
 - `img/D_antes_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
 - `img/D_antes_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
 - `img/D_despacho_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
@@ -35,6 +41,29 @@ archivo de J. P. Addesso. Las fotografías históricas del Digesto Gilense (arch
 - `img/D_secreto_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
 - `img/D_treinta_0.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
 - `img/D_treinta_1.jpg` · Historia de nuestras autoridades, Digesto Gilense · Archivo municipal · https://surtecto.github.io/HCD-SAG-Digesto2026/autoridades.html
+- `img/F1699.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1730.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1753.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1779.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1780.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1793.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1794.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1798.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1800.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1821a.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1821b.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1827.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1828.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1831.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1841.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1852.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1854.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1855.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1859.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1865.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1867.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1868.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
+- `img/F1872.jpg` · Imagen generada con IA (Figma) a partir de la investigación de la línea · no es un documento de época · archivo de J. P. Addesso
 - `img/L01.jpg` · Jose Bermudes · Dominio público · https://commons.wikimedia.org/wiki/File:Plano_de_la_ciudad_de_Buenos_Aires,_en_esa_%C3%A9poca_Buenos_Ayres,_en_1713.jpg
 - `img/L02.jpg` · Johann Moritz Rugendas · Dominio público · https://commons.wikimedia.org/wiki/File:Mauricio_rugendas_-_el_malon.jpg
 - `img/L03.jpg` · Juan León Pallière · Dominio público · https://commons.wikimedia.org/wiki/File:Pulper%C3%ADa_de_campa%C3%B1a_-_Buenos_Aires,_seg%C3%BAn_Palli%C3%A8re.tif
