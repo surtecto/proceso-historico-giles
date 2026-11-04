@@ -12,6 +12,15 @@ Cada hecho es un círculo que contiene a los anteriores: avanzar en el tiempo ag
 
 Sitio estático: `index.html` y la carpeta `img/`. No necesita servidor ni compilación.
 
+## Aportes de las familias
+
+Cualquier vecino puede mandar un hecho de su familia (fecha, qué pasó y hasta tres fotos) con el botón «Aportar un hecho».
+Los aportes los recibe una hoja de cálculo de Google con el script de `apps-script/aportes.gs`, que guarda las fotos en
+una carpeta privada de Drive. Quien administra la línea los revisa y, al marcarlos como «publicado», aparecen solos en la
+línea como círculos de las familias alrededor de su época. El nombre y el contacto de quien envía nunca se publican.
+La dirección del receptor se configura en `aportes_config.json` del proyecto; mientras esté vacía, el formulario avisa que
+todavía no envía y ofrece copiar el texto.
+
 ## Fuentes
 
 Las fuentes de cada hecho están enlazadas en su ficha. Principales: «Síntesis histórica» de Héctor F. Felice
